@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios';
 
 const Login = () => {
+
+  const [emailId,setEmailId]=useState("");
+  const [password,setPassword]=useState("");
+
+  const handleLogin= async()=>{
+  try{
+     await axios.post("http://localhost:3000/login",{
+      emailId,
+      password
+     })
+  }catch(err){
+    console.log(err)
+  }
+  }
+
   return (
     <div className='flex justify-center my-20'>
       <div className="card bg-base-300 w-96 shadow-xl ">
@@ -11,18 +27,18 @@ const Login = () => {
             <div className="label">
               <span className="label-text">Email ID</span>
             </div>
-            <input type="text" placeholder="" className="input input-bordered w-full max-w-xs" />
+            <input type="text"  value={emailId} className="input input-bordered w-full max-w-xs" onChange={(e)=>setEmailId(e.target.value)} />
           </label>
 
-          <label className="form-control w-full max-w-xs">
+          <label className="form-control w-full max-w-xs"> 
             <div className="label">
               <span className="label-text">Password</span>
             </div>
-            <input type="text" placeholder="" className="input input-bordered w-full max-w-xs" />
+            <input type="text" value={password} className="input input-bordered w-full max-w-xs" onChange={(e)=>setPassword(e.target.value)}/>
           </label>
 
           <div className="card-actions justify-center my-2">
-            <button className="btn btn-primary">Login</button>
+            <button className="btn btn-primary" onClick={handleLogin}>Login</button>
           </div>
         </div>
       </div>
