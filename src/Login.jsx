@@ -8,9 +8,11 @@ const Login = () => {
 
   const handleLogin= async()=>{
   try{
-     await axios.post("http://localhost:3000/login",{
+     const res=await axios.post("http://localhost:3000/login", {
       emailId,
       password
+     },{
+      withCredentials:true,
      })
   }catch(err){
     console.log(err)
