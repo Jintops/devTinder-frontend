@@ -5,8 +5,8 @@ import { addUser } from './utils/userSlice';
 
 const Login = () => {
 
-  const [emailId,setEmailId]=useState("");
-  const [password,setPassword]=useState("");
+  const [emailId,setEmailId]=useState("vini@gmail.com");
+  const [password,setPassword]=useState("Vini@777");
   const dispatch= useDispatch();
 
   const handleLogin= async()=>{
@@ -17,7 +17,7 @@ const Login = () => {
      },{
       withCredentials:true,
      })
-     console.log(res.data)
+    
      dispatch(addUser(res.data))
   }catch(err){
     console.log(err)
