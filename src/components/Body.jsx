@@ -15,15 +15,14 @@ const Body = () => {
 
   const fetchdata = async () => {
     try {
-      const res = await axios.get(BASE_URL + "/profile/view", {
+      const res = await axios.get(BASE_URL +"/profile/view", {
         withCredentials: true,
       })
       diapatch(addUser(res.data))
     } catch (err) {
       if(err.status===401){
         navigate("/login")
-      }
-      
+      }    
       console.error(err)
     }
   }
