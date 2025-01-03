@@ -28,7 +28,7 @@ const Login = () => {
     console.log(err)
   }
   }
-
+ 
   return (
     <div className='flex justify-center my-20'>
       <div className="card bg-base-300 w-96 shadow-xl ">
@@ -41,7 +41,7 @@ const Login = () => {
             </div>
             <input type="text"  value={emailId} className="input input-bordered w-full max-w-xs" onChange={(e)=>setEmailId(e.target.value)} />
           </label>
-
+          
           <label className="form-control w-full max-w-xs"> 
             <div className="label">
               <span className="label-text">Password</span>
