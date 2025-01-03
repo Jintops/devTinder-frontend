@@ -9,6 +9,7 @@ const Login = () => {
 
   const [emailId,setEmailId]=useState("vini@gmail.com");
   const [password,setPassword]=useState("Vini@777");
+  const [error,setError]=useState("");
   const dispatch= useDispatch();
   const navigate=useNavigate();
   const handleLogin= async()=>{
@@ -23,6 +24,7 @@ const Login = () => {
      dispatch(addUser(res.data))
     return navigate("/feed")
   }catch(err){
+    setError(err?.response?.data || "Something went wrong")
     console.log(err)
   }
   }
@@ -46,7 +48,7 @@ const Login = () => {
             </div>
             <input type="text" value={password} className="input input-bordered w-full max-w-xs" onChange={(e)=>setPassword(e.target.value)}/>
           </label>
-
+         <p className='text-red-500'>{error}</p>
           <div className="card-actions justify-center my-2">
             <button className="btn btn-primary" onClick={handleLogin}>Login</button>
           </div>
