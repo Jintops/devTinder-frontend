@@ -5,7 +5,7 @@ const UserCard = ({ data }) => {
   return (
     <div>
       <div className="card bg-base-300 w-80 shadow-xl">
-      <figure className="mx-20 my-5">
+      <figure className="">
   <img 
     className="border-4 border-gray-500 rounded-lg"
     src={photoUrl} 
@@ -16,8 +16,8 @@ const UserCard = ({ data }) => {
   <div className="card-body">
     <h2 className="card-title">{firstName+" "+lastName}</h2>
     <p>{about}</p>
-    <p>{age}</p>
-    <p>{gender}</p>
+    <p>age: {age}</p>
+    <p>Gender: {gender}</p>
     <div className="card-actions justify-center">
       <button className="btn btn-primary">Ignored</button>
       <button className="btn btn-secondary">Interested</button>

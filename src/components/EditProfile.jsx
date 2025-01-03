@@ -11,20 +11,25 @@ const EditProfile = ({user}) => {
     const [firstName,setFirstName]=useState(user.firstName);
       const [lastName,setLastname]=useState(user.lastName);
       const [photoUrl,setPhotoUrl]=useState(user.photoUrl);
-      const [age,setAge]=useState(user.age);
-      const [gender,setGender]=useState(user.gender);
-      const [about,setAbout]=useState(user.about);
+      const [age, setAge] = useState(user.age || "");
+      const [gender, setGender] = useState(user.gender || "");
+      const [about, setAbout] = useState(user.about || "");
       const [error,setError]=useState("");
+      const [showToast, setShowToast] = useState(false);
       const dispatch=useDispatch();
 
       const saveProfile=async()=>{
+        setError("")
         try{
            const res=await axios.patch(BASE_URL+"/profile/edit",{
             firstName,lastName,photoUrl,age,gender,about
            }
            ,{withCredentials:true})
            dispatch(addUser(res.data.data))
-
+           setShowToast(true)
+           setTimeout(() => {
+            setShowToast(false)
+           }, 3000);
         }catch(err){
             setError(err?.response?.data)
         }
@@ -89,6 +94,13 @@ const EditProfile = ({user}) => {
    <div>
     <UserCard data={{firstName,lastName,age,photoUrl,gender,about}}/>
     </div>
+
+  {showToast &&  <div className="toast toast-top toast-center">
+  
+  <div className="alert alert-success">
+    <span>Profile updated successfully.</span>
+  </div>
+</div>}
     </div>
   )
 }
