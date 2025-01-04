@@ -74,9 +74,7 @@ const EditProfile = ({user}) => {
             <div className="label">
               <span className="label-text">gender</span>
             </div>
-            <input type="text" value={gender} className="input input-bordered w-full max-w-xs" onChange={(e)=>setGender(e.target.value)}/>
-
-            
+            <input type="text" value={gender} className="input input-bordered w-full max-w-xs" onChange={(e)=>setGender(e.target.value)}/>          
           </label>
 
           <label className="form-control w-full max-w-xs"> 
