@@ -75,13 +75,16 @@ const EditProfile = ({user}) => {
               <span className="label-text">gender</span>
             </div>
             <input type="text" value={gender} className="input input-bordered w-full max-w-xs" onChange={(e)=>setGender(e.target.value)}/>
+
+            
           </label>
 
           <label className="form-control w-full max-w-xs"> 
             <div className="label">
               <span className="label-text">About</span>
             </div>
-            <input type="text" value={about} className="input input-bordered w-full max-w-xs" onChange={(e)=>setAbout(e.target.value)}/>
+            <textarea value={about} className="textarea textarea-bordered" onChange={(e)=>setAbout(e.target.value)}></textarea>
+            {/* <input type="text" value={about} className="input input-bordered w-full max-w-xs" onChange={(e)=>setAbout(e.target.value)}/> */}
           </label>
 
          <p className='text-red-500'>{error}</p>
