@@ -1,7 +1,24 @@
+import axios from 'axios'
 import React from 'react'
+import { BASE_URL } from '../utils/constants'
+import { useDispatch } from 'react-redux'
+import { removeOneUser } from '../utils/feedSlice'
 
 const UserCard = ({ data }) => {
-    const {firstName,lastName,photoUrl,age,gender,about}=data;
+  
+  const {_id,firstName,lastName,photoUrl,age,gender,about}=data;
+const dispatch=useDispatch();
+
+   const handleSendRequest=async(status,userId)=>{
+    try{
+        const res=await axios.post(BASE_URL+"/request/send/"+status+"/"+userId,{},{withCredentials:true})
+          dispatch(removeOneUser(userId))
+    }catch(err){
+      console.error(err)
+    }
+   }
+
+   
   return (
     <div>
       <div className="card bg-base-300 w-80 shadow-xl">
@@ -19,8 +36,8 @@ const UserCard = ({ data }) => {
     {age &&<p>age:{age}</p>}
    {gender && <p>Gender:{gender}</p>}
     <div className="card-actions justify-center">
-      <button className="btn btn-primary">Ignored</button>
-      <button className="btn btn-secondary">Interested</button>
+      <button className="btn btn-primary" onClick={()=>handleSendRequest("ignored",_id)}>Ignored</button>
+      <button className="btn btn-secondary" onClick={()=>handleSendRequest("interested",_id)}>Interested</button>
     </div>
   </div>
 </div>
