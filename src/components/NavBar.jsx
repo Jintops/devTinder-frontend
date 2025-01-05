@@ -9,7 +9,7 @@ const NavBar = () => {
 
   const user=useSelector(store=>store.user);
   const dispatch=useDispatch();
- const navigate=useNavigate();
+  const navigate=useNavigate();
 
   const handleLogOut=async()=>{
     try{
@@ -19,7 +19,6 @@ const NavBar = () => {
     }catch(err){
       console.error(err)
     }
-   
   }
  
   return (
@@ -32,8 +31,7 @@ const NavBar = () => {
     </div>}
     {user && <div className="flex-none gap-2">
     
-     <div className="dropdown dropdown-end mx-4 ">
-     
+     <div className="dropdown dropdown-end mx-4 ">  
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar ">
           <div className="w-10 rounded-full ">
             <img 
