@@ -11,20 +11,20 @@ import { addUser } from '../utils/userSlice'
 
 const Body = () => {
   const diapatch = useDispatch();
- const navigate=useNavigate();
- const userData = useSelector((store) =>store.user);
+  const navigate = useNavigate();
+  const userData = useSelector((store) => store.user);
 
   const fetchdata = async () => {
     if (userData) return;
     try {
-      const res = await axios.get(BASE_URL +"/profile/view", {
+      const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
       })
       diapatch(addUser(res.data))
     } catch (err) {
-      if(err.status===401){
+      if (err.status === 401) {
         navigate("/login")
-      }    
+      }
       console.error(err)
     }
   }
@@ -35,9 +35,9 @@ const Body = () => {
 
   return (
     <div>
-      <NavBar/>
-     <Outlet></Outlet>
-      <Footer/>
+      <NavBar />
+      <Outlet></Outlet>
+      <Footer />
     </div>
   )
 }
