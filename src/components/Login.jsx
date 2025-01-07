@@ -12,7 +12,7 @@ const Login = () => {
   const [firstName,setFirstName]=useState("");
   const [lastName,setLastname]=useState("");
   const [error,setError]=useState("");
-  const [isLogin,setIsLogin]=useState(false)
+  const [isLogin,setIsLogin]=useState(true)
   const dispatch= useDispatch();
   const navigate=useNavigate();
   
@@ -36,7 +36,7 @@ const Login = () => {
   const handleSignUp=async()=>{
     try{
         const res= await axios.post(BASE_URL+"/signup",{firstName,lastName,emailId,password},{withCredentials:true})
-        dispatch(addUser(res.data))
+        dispatch(addUser(res.data.data))
         return navigate("/profile")
     }catch(err){
       setError(err?.response?.data || "Something went wrong")
@@ -80,7 +80,7 @@ const Login = () => {
          <p className='text-red-500'>{error}</p>
          
           <div className="card-actions justify-center my-2">
-            <button className="btn btn-primary" onClick={isLogin ? handleLogin : handleSignUp}>{isLogin ? "signup" :"Login "}</button>
+            <button className="btn btn-primary" onClick={isLogin ? handleLogin : handleSignUp}>{isLogin ? "Login" :"SignUp "}</button>
           </div>
           <div className='my-5'>
           <p className='cursor-pointer text-center mx-5' onClick={()=>setIsLogin((value)=>!value)}>{isLogin ? "New to devTinder? Create an account" : "Existing User? Log in"}</p>
