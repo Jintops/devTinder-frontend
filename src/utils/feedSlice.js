@@ -12,5 +12,5 @@ const feedSlice=createSlice({
     }
 })
 
-export const {addFeed,removeOneUser} =feedSlice.actions;
+export const {addFeed, removeOneUser} =feedSlice.actions;
 export default feedSlice.reducer;
