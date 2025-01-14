@@ -24,7 +24,7 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-300">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">🧑‍💻devTinder</Link>
+        <Link to="/" className="btn btn-ghost text-xl">⚽GoaLMate</Link>
       </div>
       {user && <div className=''>
         <p className='font-bold'> Welcome, {user.firstName}</p>
