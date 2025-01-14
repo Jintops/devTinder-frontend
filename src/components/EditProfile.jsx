@@ -69,13 +69,24 @@ const EditProfile = ({ user }) => {
               </div>
               <input type="text" value={age} className="input input-bordered w-full max-w-xs" onChange={(e) => setAge(e.target.value)} />
             </label>
-
+            
             <label className="form-control w-full max-w-xs">
               <div className="label">
-                <span className="label-text">gender</span>
+                <span className="label-text">Gender</span>
               </div>
-              <input type="text" value={gender} className="input input-bordered w-full max-w-xs" onChange={(e) => setGender(e.target.value)} />
+              <select
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                className="select select-bordered w-full max-w-xs"
+              >
+                <option value="" disabled>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
             </label>
+
+
 
             <label className="form-control w-full max-w-xs">
               <div className="label">
