@@ -6,7 +6,8 @@ import { removeOneUser } from '../utils/feedSlice'
 
 const UserCard = ({ data }) => {
 
-  const { _id, firstName, lastName, photoUrl, age, gender, about } = data;
+  const { _id, firstName, lastName, photoUrl, skills , gender, about } = data;
+
   const dispatch = useDispatch();
 
   const handleSendRequest = async (status, userId) => {
@@ -33,7 +34,7 @@ const UserCard = ({ data }) => {
         <div className="card-body">
           <h2 className="card-title">{firstName + " " + lastName}</h2>
           <p>{about}</p>
-          {age && <p>age:{age}</p>}
+          {skills.length!==0 && <p>skills:{skills}</p>}
           {gender && <p>Gender:{gender}</p>}
           <div className="card-actions justify-center">
             <button className="btn btn-primary" onClick={() => handleSendRequest("ignored", _id)}>Ignored</button>

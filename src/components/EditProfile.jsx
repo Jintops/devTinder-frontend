@@ -11,7 +11,7 @@ const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastname] = useState(user.lastName);
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
-  const [age, setAge] = useState(user.age || "");
+  const [skills, setSkills] = useState(user.skills || "");
   const [gender, setGender] = useState(user.gender || "");
   const [about, setAbout] = useState(user.about || "");
   const [error, setError] = useState("");
@@ -65,11 +65,11 @@ const EditProfile = ({ user }) => {
 
             <label className="form-control w-full max-w-xs">
               <div className="label">
-                <span className="label-text">age</span>
+                <span className="label-text">Skills</span>
               </div>
-              <input type="text" value={age} className="input input-bordered w-full max-w-xs" onChange={(e) => setAge(e.target.value)} />
+              <input type="text" value={skills} className="input input-bordered w-full max-w-xs" onChange={(e) => setSkills(e.target.value)} />
             </label>
-            
+
             <label className="form-control w-full max-w-xs">
               <div className="label">
                 <span className="label-text">Gender</span>
@@ -104,7 +104,7 @@ const EditProfile = ({ user }) => {
         </div>
       </div>
       <div>
-        <UserCard data={{ firstName, lastName, age, photoUrl, gender, about }} />
+        <UserCard data={{ firstName, lastName, skills, photoUrl, gender, about }} />
       </div>
 
       {showToast && <div className="toast toast-top toast-center">
