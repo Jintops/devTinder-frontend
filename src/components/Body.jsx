@@ -23,7 +23,7 @@ const Body = () => {
       diapatch(addUser(res.data))
     } catch (err) {
       if (err.status === 401) {
-        navigate("/login")
+        navigate("/homepage")
       }
       console.error(err)
     }

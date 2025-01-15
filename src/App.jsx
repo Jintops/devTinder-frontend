@@ -7,6 +7,7 @@ import appStore from "./utils/appStore"
 import Feed from "./components/Feed"
 import Connections from "./components/Connections"
 import Requests from "./components/Requests"
+import HomePage from "./components/HomePage"
 
 function App() {
  
@@ -17,7 +18,7 @@ function App() {
     <BrowserRouter basename="/">
     <Routes>
       <Route path="/" element={<Body/>}>
-      <Route path="/" element={<Feed/>}></Route>
+      <Route path="/homepage" element={<HomePage/>}></Route>
       <Route path="/profile" element={<Profile/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
       <Route path="/connections" element={<Connections/>}></Route>

@@ -26,6 +26,9 @@ const NavBar = () => {
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">⚽GoaLMate</Link>
       </div>
+      <div>
+      <button className=" btn  bg-zinc-700 hover:bg-slate-950">Login</button>
+      </div>
       {user && <div className=''>
         <p className='font-bold'> Welcome, {user.firstName}</p>
       </div>}
