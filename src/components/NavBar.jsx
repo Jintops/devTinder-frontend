@@ -10,12 +10,15 @@ const NavBar = () => {
   const user = useSelector(store => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+ 
+   const handleLogin=()=>{
+    navigate('/login')
+   }
   const handleLogOut = async () => {
     try {
       await axios.post(BASE_URL + "/logout", {}, { withCredentials: true })
       dispatch(removeUser());
-      return navigate("/login")
+      return navigate("/")
     } catch (err) {
       console.error(err)
     }
@@ -24,10 +27,10 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-300">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">⚽GoaLMate</Link>
+        <h1 className='btn btn-ghost text-xl'>⚽GoaLMate</h1>
       </div>
       <div>
-      <button className=" btn  bg-zinc-700 hover:bg-slate-950 text-white">Login</button>
+     {!user && <button className=" btn  bg-zinc-700 hover:bg-slate-950 text-white" onClick={handleLogin}>Login</button>}
       </div>
       {user && <div className=''>
         <p className='font-bold'> Welcome, {user.firstName}</p>

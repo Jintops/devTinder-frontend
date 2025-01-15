@@ -10,7 +10,7 @@ import { addUser } from '../utils/userSlice'
 
 
 const Body = () => {
-  const diapatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const userData = useSelector((store) => store.user);
 
@@ -20,10 +20,10 @@ const Body = () => {
       const res = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
       })
-      diapatch(addUser(res.data))
+      dispatch(addUser(res.data))
     } catch (err) {
       if (err.status === 401) {
-        navigate("/homepage")
+        navigate("/")
       }
       console.error(err)
     }
@@ -37,7 +37,7 @@ const Body = () => {
     <div className=''>
       <NavBar />
       <Outlet></Outlet>
-      <Footer />
+      
     </div>
   )
 }
