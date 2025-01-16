@@ -1,7 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+    const user =useSelector(store=>store.user)
          const navigate=useNavigate();
     const handleLogin=()=>{
         navigate('/login')
@@ -30,14 +32,15 @@ const HomePage = () => {
         </p>
 
         {/* Buttons */}
-        <div className="mt-6 flex space-x-4">
+
+        {!user && <div className="mt-6 flex space-x-4">
           <button className="px-6 py-3 bg-pink-600 text-white text-lg font-semibold rounded-md hover:bg-pink-700 transition" onClick={handleLogin}>
             Sign Up
           </button>
           <button className="px-6 py-3 bg-pink-600 text-white text-lg font-semibold rounded-md hover:bg-pink-700 transition " onClick={handleLogin}>
             Login
           </button>
-        </div>
+        </div>}
       </div>
     </div>
   );

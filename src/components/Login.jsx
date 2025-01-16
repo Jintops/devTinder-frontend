@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { BASE_URL } from '../utils/constants';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,12 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(true)
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // const showRegister = useSelector((store) => store.register.showRegister);
+
+  // if (showRegister) {
+  //   return <Navigate to="/signup" />;
+  // }
 
   const handleLogin = async () => {
     try {

@@ -11,6 +11,7 @@ import appStore from "./utils/appStore";
 import Body from "./components/Body";  // Ensure Body is a proper layout
 
 function App() {
+  
   return (
     <Provider store={appStore}>
       <BrowserRouter>
@@ -21,7 +22,7 @@ function App() {
                 <Route index element={<HomePage />} />
                 <Route path="feed" element={<Feed />} />
                 <Route path="profile" element={<Profile />} />
-                <Route path="login" element={<Login />} />
+                <Route path="login" element={ <Login />} />
                 <Route path="connections" element={<Connections />} />
                 <Route path="requests" element={<Requests />} />
               </Route>
