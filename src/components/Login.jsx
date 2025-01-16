@@ -44,7 +44,7 @@ const Login = () => {
   }
 
   return (
-    <div className='flex justify-center my-14'>
+    <div className='flex justify-center my-28'>
       <div className="card bg-base-200 w-96 shadow-xl ">
         <div className="card-body">
           <h2 className="card-title justify-center text-2xl font-bold text-white">{isLogin ? "Login" : "Create Account"} </h2>
