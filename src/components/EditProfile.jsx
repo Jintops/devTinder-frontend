@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import UserCard from './UserCard';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
@@ -6,115 +6,143 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 
 const EditProfile = ({ user }) => {
-
-
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastname] = useState(user.lastName);
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
-  const [skills, setSkills] = useState(user.skills || "");
+  const [skills, setSkills] = useState(user.skills || []);
   const [gender, setGender] = useState(user.gender || "");
   const [about, setAbout] = useState(user.about || "");
   const [error, setError] = useState("");
   const [showToast, setShowToast] = useState(false);
+  const [skillInput, setSkillInput] = useState("");
+
   const dispatch = useDispatch();
 
   const saveProfile = async () => {
-    setError("")
+    setError("");
     try {
       const res = await axios.patch(BASE_URL + "/profile/edit", {
-        firstName, lastName, photoUrl, skills, gender, about
-      }
-        , { withCredentials: true })
-      dispatch(addUser(res.data.data))
-      setShowToast(true)
+        firstName,
+        lastName,
+        photoUrl,
+        skills,
+        gender,
+        about
+      }, { withCredentials: true });
+
+      dispatch(addUser(res.data.data));
+      setShowToast(true);
       setTimeout(() => {
-        setShowToast(false)
+        setShowToast(false);
       }, 3000);
     } catch (err) {
-      setError(err?.response?.data)
+      setError(err?.response?.data);
     }
-  }
+  };
+
+  const handleAddSkill = () => {
+    if (skillInput.trim() !== "" && !skills.includes(skillInput.trim())) {
+      setSkills([...skills, skillInput.trim()]);
+      setSkillInput("");
+    }
+  };
+
+  const handleRemoveSkill = (skillToRemove) => {
+    setSkills(skills.filter(skill => skill !== skillToRemove));
+  };
 
   return (
-    <div className='flex justify-center my-10'>
-      <div className='flex justify-center mx-10'>
-        <div className="card bg-base-300 w-96 shadow-xl ">
-          <div className="card-body">
-            <h2 className="card-title justify-center">Edit Profile</h2>
+    <div className="flex flex-col justify-center items-center min-h-screen px-4 bg-gray-900 text-white">
+      <div className="flex flex-col lg:flex-row w-full max-w-5xl  shadow-lg rounded-lg p-6 gap-6">
 
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">First Name</span>
-              </div>
-              <input type="text" value={firstName} className="input input-bordered w-full max-w-xs" onChange={(e) => setFirstName(e.target.value)} />
-            </label>
+        {/* Profile Edit Form */}
+        <div className="w-full lg:w-1/2 bg-gray-700 p-6 rounded-lg shadow-md">
+          <h2 className="text-2xl font-semibold text-center text-white mb-6">Edit Profile</h2>
 
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">Last Name</span>
-              </div>
-              <input type="text" value={lastName} className="input input-bordered w-full max-w-xs" onChange={(e) => setLastname(e.target.value)} />
-            </label>
+          {/* First Name */}
+          <div className="mb-4">
+            <label className="text-gray-300 font-medium">First Name</label>
+            <input type="text" value={firstName} className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400" onChange={(e) => setFirstName(e.target.value)} />
+          </div>
 
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">photoUrl</span>
-              </div>
-              <input type="text" value={photoUrl} className="input input-bordered w-full max-w-xs" onChange={(e) => setPhotoUrl(e.target.value)} />
-            </label>
+          {/* Last Name */}
+          <div className="mb-4">
+            <label className="text-gray-300 font-medium">Last Name</label>
+            <input type="text" value={lastName} className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400" onChange={(e) => setLastname(e.target.value)} />
+          </div>
 
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">Skills</span>
-              </div>
-              <input type="text" value={skills} className="input input-bordered w-full max-w-xs" onChange={(e) => setSkills(e.target.value)} />
-            </label>
+          {/* Photo URL */}
+          <div className="mb-4">
+            <label className="text-gray-300 font-medium">Photo URL</label>
+            <input type="text" value={photoUrl} className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400" onChange={(e) => setPhotoUrl(e.target.value)} />
+          </div>
 
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">Gender</span>
-              </div>
-              <select
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                className="select select-bordered w-full max-w-xs"
-              >
-                <option value="" disabled>Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-            </label>
+          {/* Skills */}
+          <div className="mb-4">
+            <label className="text-gray-300 font-medium">Skills</label>
+            <div className="flex">
+              <input
+                type="text"
+                value={skillInput}
+                className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                placeholder="Enter skill & press add"
+                onChange={(e) => setSkillInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleAddSkill()}
+              />
+              <button className="ml-2 bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 transition" onClick={handleAddSkill}>Add</button>
+            </div>
 
-
-
-            <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">About</span>
-              </div>
-              <textarea value={about} className="textarea textarea-bordered" onChange={(e) => setAbout(e.target.value)}></textarea>
-              {/* <input type="text" value={about} className="input input-bordered w-full max-w-xs" onChange={(e)=>setAbout(e.target.value)}/> */}
-            </label>
-
-            <p className='text-red-500'>{error}</p>
-            <div className="card-actions justify-center my-2">
-              <button className="btn btn-primary" onClick={saveProfile} >Save Profile</button>
+            {/* Skills Display */}
+            <div className="flex flex-wrap gap-2 mt-3">
+              {skills.map((skill, index) => (
+                <span key={index} className="bg-indigo-600 text-white px-3 py-1 rounded-full flex items-center">
+                  {skill}
+                  <button className="ml-2 text-white hover:text-red-300" onClick={() => handleRemoveSkill(skill)}>✕</button>
+                </span>
+              ))}
             </div>
           </div>
+
+          {/* Gender */}
+          <div className="mb-4">
+            <label className="text-gray-300 font-medium">Gender</label>
+            <select value={gender} onChange={(e) => setGender(e.target.value)} className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400">
+              <option value="" disabled>Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          {/* About */}
+          <div className="mb-4">
+            <label className="text-gray-300 font-medium">About</label>
+            <textarea value={about} className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400" onChange={(e) => setAbout(e.target.value)}></textarea>
+          </div>
+
+          {/* Error Message */}
+          {error && <p className="text-red-400 text-center">{error}</p>}
+
+          {/* Save Button */}
+          <div className="text-center mt-4">
+            <button className="w-full bg-indigo-500 text-white py-2 rounded-md hover:bg-indigo-600 transition" onClick={saveProfile}>Save Profile</button>
+          </div>
+        </div>
+
+        {/* Preview Card */}
+        <div className="w-full lg:w-1/2 flex justify-center">
+          <UserCard data={{ firstName, lastName, skills, photoUrl, gender, about }} />
         </div>
       </div>
-      <div>
-        <UserCard data={{ firstName, lastName, skills, photoUrl, gender, about }} />
-      </div>
 
-      {showToast && <div className="toast toast-top toast-center">
-
-        <div className="alert alert-success">
-          <span>Profile updated successfully.</span>
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="fixed bottom-4 right-4 bg-green-500 text-white py-2 px-4 rounded-md shadow-lg">
+          Profile updated successfully.
         </div>
-      </div>}
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default EditProfile
+export default EditProfile;
