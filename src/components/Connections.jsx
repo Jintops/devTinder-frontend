@@ -27,14 +27,14 @@ const Connections = () => {
   if (connections.length === 0) return <h1 className='text-center text-3xl my-10 font-bold'>No connections found</h1>;
 
   return (
-    <div>
+    <div className='h-[620px]'>
       <h1 className='text-center text-3xl my-10 font-bold'>Connections</h1>
       {
         connections.map((connection) => {
           const { _id, firstName, lastName, photoUrl, age, gender, about } = connection;
 
           return (
-            <div key={_id} className="border border-black bg-base-300 w-2/3 flex m-6 p-4 mx-auto">
+            <div key={_id} className="border border-black bg-base-300 w-2/3 flex m-6 p-4 mx-auto ">
               <figure>
                 <img className='rounded-full w-24 h-24'
                   src={photoUrl}
