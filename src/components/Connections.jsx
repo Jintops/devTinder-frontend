@@ -29,11 +29,7 @@ const Connections = () => {
       <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-gray-100">
         <h1 className="text-3xl font-bold">No Connections Found</h1>
         <p className="text-gray-400 mt-4">Start connecting with other developers!</p>
-        <img
-          src="https://via.placeholder.com/400x300?text=No+Connections"
-          alt="No connections illustration"
-          className="mt-6 w-80"
-        />
+       
       </div>
     );
   }

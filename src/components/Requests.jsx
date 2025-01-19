@@ -5,68 +5,96 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addRequests, removeRequest } from '../utils/requestSlice'
 
 const Requests = () => {
-  const requests = useSelector(store => store.requests)
+  const requests = useSelector((store) => store.requests);
   const dispatch = useDispatch();
 
   const reviewRequests = async (status, _id) => {
     try {
-      const res = await axios.post(BASE_URL + "/request/review/" + status + "/" + _id, {}, { withCredentials: true })
-      dispatch(removeRequest(_id))
+      await axios.post(BASE_URL + "/request/review/" + status + "/" + _id, {}, { withCredentials: true });
+      dispatch(removeRequest(_id));
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get(BASE_URL + "/user/requests/received", { withCredentials: true })
-      console.log(res.data.data)
-      dispatch(addRequests(res.data.data))
+      const res = await axios.get(BASE_URL + "/user/requests/received", { withCredentials: true });
+      dispatch(addRequests(res.data.data));
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   useEffect(() => {
     fetchRequests();
-  }, [])
+  }, []);
 
-  if (!requests) return;
+  if (!requests) return null;
 
-  if (requests.length === 0) return <h1 className='text-center text-3xl my-10 font-bold'>No Requests found</h1>;
+  if (requests.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-gray-100">
+        <h1 className="text-3xl font-bold">No Requests Found</h1>
+        <p className="text-gray-400 mt-4">You have no pending connection requests at the moment.</p>
+        <img
+          
+          alt="No requests illustration"
+          className="mt-6 w-80"
+        />
+      </div>
+    );
+  }
 
   return (
-    <div className=''>
-      <h1 className='text-center text-3xl my-10 font-bold'>Connection Requests</h1>
-      {
-        requests.map((request) => {
+    <div className="min-h-screen bg-gray-900 text-gray-100 py-8">
+      <h1 className="text-center text-3xl font-bold mb-6">Connection Requests</h1>
+      <div className="max-w-4xl mx-auto bg-gray-800 rounded-lg shadow-md p-4">
+        {requests.map((request) => {
           const { _id, firstName, lastName, photoUrl, age, gender, about } = request.fromUserId;
 
           return (
-            <div key={_id} className="flex justify-around items-center border border-black bg-base-300 w-2/3  m-6 p-4 mx-auto">
-              <figure>
-                <img className='rounded-full w-24 h-24'
+            <div
+              key={_id}
+              className="flex items-center justify-between p-4 border-b border-gray-700 last:border-none"
+            >
+              <div className="flex items-center gap-4">
+                <img
+                  className="rounded-full w-12 h-12 object-cover border-2 border-indigo-500"
                   src={photoUrl}
-                  alt="photo" />
-              </figure>
-              <div className="mx-6">
-                <h2 className="">{firstName + "  " + lastName}</h2>
-                {age && <p>{age + " "}</p>}
-                {gender && <p>{gender}</p>}
-                <p>{about}</p>
-
+                  alt={`${firstName} ${lastName}`}
+                />
+                <div>
+                  <h2 className="text-lg font-medium">
+                    {firstName} {lastName}
+                  </h2>
+                  <div className="text-sm text-gray-400">
+                    {age && <span className="mr-2">Age: {age}</span>}
+                    {gender && <span>{gender}</span>}
+                  </div>
+                  {about && <p className="text-sm text-gray-300 mt-1">{about}</p>}
+                </div>
               </div>
-              <div className='flex'>
-                <button className="btn btn-active btn-secondary mx-2 " onClick={() => reviewRequests("accepted", request._id)}>Accept</button>
-                <button className="btn btn-active btn-primary mx-2" onClick={() => reviewRequests("rejected", request._id)}>Reject</button>
-
+              <div className="flex gap-3  ">
+                <button
+                  className="px-5 py-2 bg-green-600 text-sm text-gray-100 rounded hover:bg-green-700 transition"
+                  onClick={() => reviewRequests("accepted", request._id)}
+                >
+                  Accept
+                </button>
+                <button
+                  className="px-5 py-2 bg-red-600 text-sm text-gray-100 rounded hover:bg-red-700 transition"
+                  onClick={() => reviewRequests("rejected", request._id)}
+                >
+                  Reject
+                </button>
               </div>
             </div>
-          )
-        })
-      }
+          );
+        })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Requests
+export default Requests;
