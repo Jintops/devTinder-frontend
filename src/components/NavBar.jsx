@@ -27,10 +27,10 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-300">
       <div className="flex-1">
-        <h1 className='btn btn-ghost text-xl'>⚽GoaLMate</h1>
+        <h1 className='btn btn-ghost text-xl bg-slate-800'>⚽GoaLMate</h1>
       </div>
       <div>
-     {!user && <button className=" btn  bg-zinc-700 hover:bg-slate-950 text-white" onClick={handleLogin}>Login</button>}
+     {!user && <button className=" btn  bg-slate-800 hover:bg-gray-700 text-white" onClick={handleLogin}>Login</button>}
       </div>
       {user && <div className=''>
         <p className='font-bold'> Welcome, {user.firstName}</p>
@@ -38,7 +38,7 @@ const NavBar = () => {
       {user && <div className="flex-none gap-2">
 
         <div className="dropdown dropdown-end mx-4 ">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar ">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar bg-pink-800 ">
             <div className="w-10 rounded-full ">
               <img
                 alt="photo of user"

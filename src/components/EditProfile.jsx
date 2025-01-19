@@ -53,10 +53,10 @@ const EditProfile = ({ user }) => {
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen px-4 bg-gray-900 text-white">
-      <div className="flex flex-col lg:flex-row w-full max-w-5xl  shadow-lg rounded-lg p-6 gap-6">
+      <div className="flex flex-col lg:flex-row w-full max-w-5xl  shadow-lg rounded-lg p-6 gap-6 my-10">
 
         {/* Profile Edit Form */}
-        <div className="w-full lg:w-1/2 bg-gray-700 p-6 rounded-lg shadow-md">
+        <div className="w-full lg:w-1/2 bg-[#34495e] p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold text-center text-white mb-6">Edit Profile</h2>
 
           {/* First Name */}
@@ -89,13 +89,13 @@ const EditProfile = ({ user }) => {
                 onChange={(e) => setSkillInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleAddSkill()}
               />
-              <button className="ml-2 bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 transition" onClick={handleAddSkill}>Add</button>
+              <button className="ml-2 bg-[#154360] text-white px-4 py-2 rounded-md hover:bg-[#1f618d] transition" onClick={handleAddSkill}>Add</button>
             </div>
 
             {/* Skills Display */}
             <div className="flex flex-wrap gap-2 mt-3">
               {skills.map((skill, index) => (
-                <span key={index} className="bg-indigo-600 text-white px-3 py-1 rounded-full flex items-center">
+                <span key={index} className="bg-[#154360] text-white px-3 py-1 rounded-full flex items-center">
                   {skill}
                   <button className="ml-2 text-white hover:text-red-300" onClick={() => handleRemoveSkill(skill)}>✕</button>
                 </span>
@@ -125,7 +125,7 @@ const EditProfile = ({ user }) => {
 
           {/* Save Button */}
           <div className="text-center mt-4">
-            <button className="w-full bg-indigo-500 text-white py-2 rounded-md hover:bg-indigo-600 transition" onClick={saveProfile}>Save Profile</button>
+            <button className="w-full bg-[#154360] text-white py-2 rounded-md hover:bg-[#1f618d] transition" onClick={saveProfile}>Save Profile</button>
           </div>
         </div>
 
