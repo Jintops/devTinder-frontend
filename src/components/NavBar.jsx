@@ -38,7 +38,7 @@ const NavBar = () => {
       {user && <div className="flex-none gap-2">
 
         <div className="dropdown dropdown-end mx-4 ">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar bg-pink-800 ">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar bg-pink-800 hover:bg-pink-900">
             <div className="w-10 rounded-full ">
               <img
                 alt="photo of user"

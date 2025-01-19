@@ -26,7 +26,7 @@ const UserCard = ({ data }) => {
       <div className="card w-80 shadow-xl bg-gradient-to-r from-gray-800 via-gray-700 to-gray-900 text-white rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
         <figure className="p-4 flex justify-center">
           <img
-            className="w-32 h-32 object-cover rounded-full border-4 border-gray-400 shadow-md"
+            className="w-32 h-32 object-cover rounded-full border-4 border-pink-700 shadow-md"
             src={photoUrl}
             alt="profile"
           />

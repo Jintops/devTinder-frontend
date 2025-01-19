@@ -37,11 +37,7 @@ const Requests = () => {
       <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-gray-100">
         <h1 className="text-3xl font-bold">No Requests Found</h1>
         <p className="text-gray-400 mt-4">You have no pending connection requests at the moment.</p>
-        <img
-          
-          alt="No requests illustration"
-          className="mt-6 w-80"
-        />
+      
       </div>
     );
   }
