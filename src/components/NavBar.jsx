@@ -27,7 +27,7 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-300">
       <div className="flex-1">
-        <h1 className='btn btn-ghost text-xl bg-slate-800'>⚽GoaLMate</h1>
+        <h1 className='btn btn-ghost text-xl bg-slate-800'>🧑‍💻DevTinder</h1>
       </div>
       <div>
      {!user && <button className=" btn  bg-slate-800 hover:bg-gray-700 text-white" onClick={handleLogin}>Login</button>}
