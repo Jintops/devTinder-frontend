@@ -31,7 +31,7 @@ const HomePage = () => {
           Discover amazing features and services
         </p>
 
-        {/* Buttons */}
+      
 
         {!user && <div className="mt-6 flex space-x-4">
           <button className="px-6 py-3 bg-pink-600 text-white text-lg font-semibold rounded-md hover:bg-pink-700 transition" onClick={handleLogin}>
