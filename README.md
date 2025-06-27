@@ -63,3 +63,15 @@ Feature - Accept/Reject connection request
 Send/Ignore the user card from the feed
 
 Signup New User
+
+
+
+deeployy  - ssh -i "devTinder-secret.pem" ubuntu@ec2-13-201-3-54.ap-south-1.compute.amazonaws.com
+nginx config -     location /api/ {
+    proxy_pass http://localhost:7777/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+}
