@@ -65,13 +65,13 @@ const UserCard = ({ data }) => {
               className="btn btn-outline btn-error w-28 transition-all duration-300 hover:bg-red-600"
               onClick={() => handleSendRequest("ignored", _id)}
             >
-              Ignore
+            X  Ignore
             </button>
             <button
-              className="btn btn-outline btn-success w-28 transition-all duration-300 hover:bg-green-600"
+              className="btn btn-outline btn-success w-32 transition-all duration-300 hover:bg-green-600"
               onClick={() => handleSendRequest("interested", _id)}
             >
-              Interested
+             💚 Interested
             </button>
           </div>
         </div>
