@@ -49,7 +49,7 @@ const Connections = () => {
               className="bg-gray-800 rounded-lg shadow-lg p-6 flex items-center gap-4 hover:bg-gray-700 transition-colors"
             >
               <img
-                className="rounded-full w-24 h-24 border-4 border-pink-500 object-cover"
+                className="rounded-full w-24 h-24 border-4  object-cover"
                 src={photoUrl}
                 alt={`${firstName} ${lastName}`}
               />
