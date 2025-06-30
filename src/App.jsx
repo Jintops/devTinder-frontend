@@ -9,6 +9,7 @@ import Footer from "./components/Footer";  // Import Footer
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Body from "./components/Body";  // Ensure Body is a proper layout
+import Premium from "./components/Premium";
 
 function App() {
   
@@ -25,6 +26,7 @@ function App() {
                 <Route path="login" element={ <Login />} />
                 <Route path="connections" element={<Connections />} />
                 <Route path="requests" element={<Requests />} />
+                <Route path="premium" element={ <Premium/>}/>
               </Route>
             </Routes>
           </div>
