@@ -6,16 +6,37 @@ const Premium = () => {
 
 
     const handleBuyClick=async(type)=>{
-   
-       try{
-       const order=await axios.post(BASE_URL+"/payment/create",{membershipType:type},{withCredentials:true})
-       }catch(err){
-        console.error(err)
-       } 
+     try{
+
+     
+       const order =await axios.post(BASE_URL+"/payment/create",{membershipType:type},{withCredentials:true})  
     
+   
+      const {amount,currency,keyId,notes,orderId}=order.data
+
+ const options = {
+        key:keyId, 
+        amount,
+        currency,
+        name:"devTinder",
+        description: 'connect to other developerss',
+        order_id: orderId,
+        prefill: {
+          name: notes.firstName + notes.lastName,
+          email: notes.emailId,
+          contact: '9999999999'
+        },
+        theme: {
+          color: '#F37254'
+        },
+      };
+
+   const rzp = new window.Razorpay(options);
+      rzp.open();
+    }catch(err){
+        console.log(err);
     }
-
-
+    }
   return (
     <div className='m-5'>
       <div className="flex flex-col lg:flex-row w-full gap-5 items-center justify-center">
