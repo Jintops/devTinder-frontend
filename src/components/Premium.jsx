@@ -1,6 +1,21 @@
+import axios from 'axios'
 import React from 'react'
+import { BASE_URL } from '../utils/constants'
 
 const Premium = () => {
+
+
+    const handleBuyClick=async(type)=>{
+   
+       try{
+       const order=await axios.post(BASE_URL+"/payment/create",{membershipType:type},{withCredentials:true})
+       }catch(err){
+        console.error(err)
+       } 
+    
+    }
+
+
   return (
     <div className='m-5'>
       <div className="flex flex-col lg:flex-row w-full gap-5 items-center justify-center">
@@ -13,7 +28,7 @@ const Premium = () => {
             <li>* Blue tick</li>
           </ul>
           <div className='mt-4 flex justify-center'>
-            <button className='btn btn-primary'>Buy Silver</button>
+            <button onClick={()=>handleBuyClick("silver")} className='btn btn-primary'>Buy Silver</button>
           </div>
         </div>
 
@@ -29,7 +44,7 @@ const Premium = () => {
             <li>* Blue tick</li>
           </ul>
           <div className='mt-4 flex justify-center'>
-            <button className='btn btn-secondary'>Buy Gold</button>
+            <button onClick={()=>handleBuyClick("gold")} className='btn btn-secondary'>Buy Gold</button>
           </div>
         </div>
       </div>
