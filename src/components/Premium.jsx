@@ -50,7 +50,7 @@ const Premium = () => {
         console.log(err);
     }
     }
-  return isUserPremium ? "you are already a premium user" : (
+  return isUserPremium ? <div className='items-center font-bold text-3xl'>"you are already a premium user"</div>  : (
     <div className='m-5'>
       <div className="flex flex-col lg:flex-row w-full gap-5 items-center justify-center">
         {/* Silver Membership */}
