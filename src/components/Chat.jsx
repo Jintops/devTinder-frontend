@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { createSocketConnection } from '../utils/socket';
+import { useSelector } from 'react-redux';
 
 const Chat = () => {
+
+    const {targetUserId}=useParams();
+    
+    const user=useSelector(store=>store.user)
+    const userId=user?._id
+    useEffect(()=>{
+        if(!userId){
+            return;
+        }
+   const socket=createSocketConnection();
+
+   socket.emit('joinChat',{userId,targetUserId})
+
+    return ()=>{
+        socket.disconnect();
+    }
+    },[userId,targetUserId])
+
+
   return (
     <div className='w-1/2 items-center border border-white justify-center m-auto'>
         <h1 className='border text-white font-bold p-5'>chat</h1>
