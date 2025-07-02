@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { createSocketConnection } from '../utils/socket';
 import { useSelector } from 'react-redux';
@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 const Chat = () => {
 
     const {targetUserId}=useParams();
-    
+    const [messages,setMessages]=useState([])
+    const [newMessage,setNewMessage]=useState("")
     const user=useSelector(store=>store.user)
     const userId=user?._id
     useEffect(()=>{
@@ -17,11 +18,21 @@ const Chat = () => {
 
    socket.emit('joinChat',{userId,targetUserId})
 
+    socket.on("messageReceiver",({firstName,text})=>{
+        console.log(firstName+":"+text)
+        setMessages([...messages,{firstName,text}])
+    })
+
     return ()=>{
         socket.disconnect();
     }
     },[userId,targetUserId])
 
+
+    const sendMessage=()=>{
+         const socket=createSocketConnection();
+        socket.emit("sendMessage",{firstName:user.firstName,targetUserId,userId,text:newMessage})
+    }
 
   return (
     <div className='w-1/2 items-center border border-white justify-center m-auto'>
@@ -36,12 +47,20 @@ const Chat = () => {
       />
     </div>
   </div>
-  <div className="chat-header">
-    Obi-Wan Kenobi
+  {messages.map((msg,index)=>{
+    return(
+        <>
+         <div key={index} className="chat-header">
+    {msg.firstName}
     <time className="text-xs opacity-50">12:45</time>
   </div>
-  <div className="chat-bubble">You were the Chosen One!</div>
-  <div className="chat-footer opacity-50">Delivered</div>
+  <div className="chat-bubble">{msg.text}</div>
+  <div className="chat-footer opacity-50">seen</div>
+  </>
+
+    )
+  })}
+ 
 </div>
 <div className="chat chat-end ">
   <div className="chat-image avatar">
@@ -61,8 +80,8 @@ const Chat = () => {
 </div>
 </div>
 <div className='flex '>
-    <input className='border w-full p-3 m-1 text-white'></input>
-    <button className='btn btn-secondary m-1'>send</button>
+    <input value={newMessage} className='border w-full p-3 m-1 text-white' onChange={(e)=>setNewMessage(e.target.value)}></input>
+    <button onClick={sendMessage} className='btn btn-secondary m-1'>send</button>
 </div>
     </div>
     
