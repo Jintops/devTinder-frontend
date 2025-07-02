@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Body from "./components/Body";  // Ensure Body is a proper layout
 import Premium from "./components/Premium";
+import Chat from "./components/Chat";
 
 function App() {
   
@@ -27,6 +28,7 @@ function App() {
                 <Route path="connections" element={<Connections />} />
                 <Route path="requests" element={<Requests />} />
                 <Route path="premium" element={ <Premium/>}/>
+                <Route path="chat/:targerUserId" element={<Chat/>}/>
               </Route>
             </Routes>
           </div>
