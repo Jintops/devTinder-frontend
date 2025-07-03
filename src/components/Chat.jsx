@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { createSocketConnection } from '../utils/socket';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { BASE_URL } from '../utils/constants';
 
 const Chat = () => {
 
@@ -10,6 +12,26 @@ const Chat = () => {
     const [newMessage,setNewMessage]=useState("")
     const user=useSelector(store=>store.user)
     const userId=user?._id
+
+const fetchChatMessages=async()=>{
+ const chat=await axios.get(BASE_URL+"/chat/"+targetUserId,{withCredentials:true})
+ console.log(chat.data.messages)
+
+ const chatMessages=chat?.data?.messages?.map((msg)=>{
+    const {senderId,text}=msg;
+    return{
+        firstName:senderId.firstName,lastName:senderId.lastName,text
+
+    }
+ })
+ setMessages(chatMessages)
+}
+
+
+useEffect(()=>{
+    fetchChatMessages();
+},[])
+
     useEffect(()=>{
         if(!userId){
             return;
@@ -18,9 +40,9 @@ const Chat = () => {
 
    socket.emit('joinChat',{userId,targetUserId})
 
-    socket.on("messageReceiver",({firstName,text})=>{
+    socket.on("messageReceiver",({firstName,lastName,text})=>{
         console.log(firstName+":"+text)
-        setMessages((messages)=>[...messages,{firstName,text}])
+        setMessages((messages)=>[...messages,{firstName,lastName,text}])
     })
 
     return ()=>{
@@ -31,7 +53,7 @@ const Chat = () => {
 
     const sendMessage=()=>{
          const socket=createSocketConnection();
-        socket.emit("sendMessage",{firstName:user.firstName,targetUserId,userId,text:newMessage})
+        socket.emit("sendMessage",{firstName:user.firstName,lastName:user.lastName,targetUserId,userId,text:newMessage})
         setNewMessage("")
     }
 
@@ -54,7 +76,7 @@ const Chat = () => {
       </div>
       <div className="chat-bubble bg-blue-100 text-black">
         <div className="flex justify-between items-center mb-1 text-xs font-semibold text-gray-600">
-          <span>{msg.firstName}</span>
+          <span>{`${msg.firstName}  ${msg.lastName}`}</span>
           <span className="opacity-50">12:45</span>
         </div>
         <div className="text-sm mb-1">
