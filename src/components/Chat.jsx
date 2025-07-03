@@ -58,14 +58,14 @@ useEffect(()=>{
     }
 
   return (
-    <div className='w-1/2 items-center border border-white justify-center m-auto'>
+    <div className='w-1/2 items-center border border-white justify-center m-auto my-5'>
         <h1 className='border text-white font-bold p-5'>chat</h1>
-        <div className='h-72 overflow-scroll'>
+        <div className='h-[500px] overflow-scroll'>
     
   
  {messages.map((msg, index) => {
   return (
-    <div key={index} className="chat chat-start mb-2 mt-1">
+    <div key={index} className={"mb-2 mt-1 chat " + (user.firstName===msg.firstName ? "chat-end" : "chat-start") }>
       <div className="chat-image avatar">
         <div className="w-10 rounded-full">
           <img
@@ -94,7 +94,7 @@ useEffect(()=>{
 
  
 
-<div className="chat chat-end ">
+{/* <div className="chat chat-end ">
   <div className="chat-image avatar">
     <div className="w-10 rounded-full">
       <img
@@ -109,7 +109,7 @@ useEffect(()=>{
   </div>
   <div className="chat-bubble">I hate you!</div>
   <div className="chat-footer opacity-50">Seen at 12:46</div>
-</div>
+</div> */}
 </div>
 <div className='flex '>
     <input value={newMessage} className='border w-full p-3 m-1 text-white' onChange={(e)=>setNewMessage(e.target.value)}></input>
