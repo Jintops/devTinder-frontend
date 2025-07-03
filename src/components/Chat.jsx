@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { createSocketConnection } from '../utils/socket';
 import { useSelector } from 'react-redux';
@@ -12,6 +12,15 @@ const Chat = () => {
     const [newMessage,setNewMessage]=useState("")
     const user=useSelector(store=>store.user)
     const userId=user?._id
+    const messagesEndRef = useRef(null);
+
+const scrollToBottom = () => {
+  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+};
+useEffect(() => {
+  scrollToBottom();
+}, [messages]);
+
 
 const fetchChatMessages=async()=>{
  const chat=await axios.get(BASE_URL+"/chat/"+targetUserId,{withCredentials:true})
@@ -58,64 +67,72 @@ useEffect(()=>{
     }
 
   return (
-    <div className='w-1/2 items-center border border-white justify-center m-auto my-5'>
-        <h1 className='border text-white font-bold p-5'>chat</h1>
-        <div className='h-[500px] overflow-scroll'>
-    
-  
- {messages.map((msg, index) => {
-  return (
-    <div key={index} className={"mb-2 mt-1 chat " + (user.firstName===msg.firstName ? "chat-end" : "chat-start") }>
-      <div className="chat-image avatar">
-        <div className="w-10 rounded-full">
-          <img
-            alt="User Avatar"
-            src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp"
-          />
-        </div>
-      </div>
-      <div className="chat-bubble bg-blue-100 text-black">
-        <div className="flex justify-between items-center mb-1 text-xs font-semibold text-gray-600">
-          <span>{`${msg.firstName}  ${msg.lastName}`}</span>
-          <span className="opacity-50">12:45</span>
-        </div>
-        <div className="text-sm mb-1">
-          {msg.text}
-        </div>
-        <div className="flex justify-between text-xs text-gray-500 mt-1">
-          <span>seen</span>
-          <span>✓✓</span> 
-        </div>
-      </div>
+    <div className="flex flex-col items-center  min-h-screen bg-gray-900 px-4">
+  <div className="w-full max-w-xl border border-white rounded-lg shadow-lg my-24 bg-gray-800">
+    {/* Header */}
+    <div className="bg-gray-700 p-4 rounded-t-lg text-white text-xl font-bold text-center">
+      Chat Room
     </div>
-  );
-})}
 
+    {/* Chat Messages Area */}
+    <div className="h-[500px] overflow-y-auto px-4 py-3 space-y-3">
+      {messages.map((msg, index) => {
+        const isUser = user.firstName === msg.firstName;
+        return (
+          <div
+            key={index}
+            className={`flex ${isUser ? "justify-end" : "justify-start"}`}
+          >
+            <div className="flex items-end space-x-2 max-w-xs">
+              {!isUser && (
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp"
+                  alt="avatar"
+                />
+              )}
+              <div className={`chat-bubble ${isUser ? "bg-blue-600 text-white" : "bg-gray-200 text-black"} px-4 py-2 rounded-lg shadow-md`}>
+                <div className="text-xs font-semibold opacity-80">
+                  {msg.firstName} {msg.lastName}
+                </div>
+                <div className="text-sm">{msg.text}</div>
+                <div className="text-right text-xs opacity-50 mt-1">
+                  12:45 • ✓✓
+                </div>
+              </div>
+              {isUser && (
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp"
+                  alt="avatar"
+                />
+              )}
+            </div>
+          </div>
+        );
+      })}
+       <div ref={messagesEndRef} />
+    </div>
 
- 
-
-{/* <div className="chat chat-end ">
-  <div className="chat-image avatar">
-    <div className="w-10 rounded-full">
-      <img
-        alt="Tailwind CSS chat bubble component"
-        src="https://img.daisyui.com/images/profile/demo/anakeen@192.webp"
+    {/* Input Area */}
+    <div className="border-t border-gray-700 p-3 flex items-center space-x-2 bg-gray-800">
+      <input
+        type="text"
+        value={newMessage}
+        onChange={(e) => setNewMessage(e.target.value)}
+        placeholder="Type your message..."
+        className="flex-1 px-4 py-2 rounded-full bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
+      <button
+        onClick={sendMessage}
+        className="btn btn-secondary px-4 py-2 rounded-full"
+      >
+        Send
+      </button>
     </div>
   </div>
-  <div className="chat-header">
-    Anakin
-    <time className="text-xs opacity-50">12:46</time>
-  </div>
-  <div className="chat-bubble">I hate you!</div>
-  <div className="chat-footer opacity-50">Seen at 12:46</div>
-</div> */}
 </div>
-<div className='flex '>
-    <input value={newMessage} className='border w-full p-3 m-1 text-white' onChange={(e)=>setNewMessage(e.target.value)}></input>
-    <button onClick={sendMessage} className='btn btn-secondary m-1'>send</button>
-</div>
-    </div>
+
     
   )
 }
