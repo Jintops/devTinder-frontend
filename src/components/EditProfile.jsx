@@ -89,7 +89,7 @@ const EditProfile = ({ user }) => {
                 onChange={(e) => setSkillInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleAddSkill()}
               />
-              <button className="ml-2 bg bg-secondary  text-white px-4 py-2 rounded-xl hover:bg-green-400 transition" onClick={handleAddSkill}>Add</button>
+              <button className="ml-2 bg bg-gray-800 hover:bg-gray-700 border border-gray-400  text-white px-4 py-2 rounded-xl  transition" onClick={handleAddSkill}>Add</button>
             </div>
 
             {/* Skills Display */}
