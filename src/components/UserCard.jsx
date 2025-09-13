@@ -51,7 +51,7 @@ const UserCard = ({ data }) => {
                 {skills.map((skill, index) => (
                   <span
                     key={index}
-                    className="bg-gray-600 text-white text-xs px-3 py-1 rounded-full shadow-sm"
+                    className="-600 text-white text-xs px-3 py-1 rounded-full shadow-sm"
                   >
                     {skill}
                   </span>

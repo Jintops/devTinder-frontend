@@ -11,6 +11,7 @@ import appStore from "./utils/appStore";
 import Body from "./components/Body";  // Ensure Body is a proper layout
 import Premium from "./components/Premium";
 import Chat from "./components/Chat";
+import HeroSection from "./components/HeroSection";
 
 function App() {
   
@@ -21,7 +22,7 @@ function App() {
           <div className="flex-grow">
             <Routes>
               <Route path="/" element={<Body />}>
-                <Route index element={<HomePage />} />
+                <Route index element={<HeroSection/>} />
                 <Route path="feed" element={<Feed />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="login" element={ <Login />} />
