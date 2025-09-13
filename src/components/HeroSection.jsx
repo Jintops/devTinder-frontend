@@ -5,7 +5,7 @@ import AboutSection from './AboutSection';
 
 const HeroSection = () => {
   return (
-     <section className="py-10 container mx-auto flex-1 px-5 flex flex-col items-center justify-center text-neutral-content">
+     <section className="py-10   mx-auto flex-1 px-5 flex flex-col items-center justify-center text-neutral-content ">
             <div className="flex lg:flex-row lg:gap-0 gap-7 flex-col items-center justify-center container mx-auto">
                 <div className="flex-1 space-y-3">
                     <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-white">Connect with developers who match your vibe</h1>
@@ -21,7 +21,7 @@ const HeroSection = () => {
                             </button>
                         </Link>
                         <Link to="/">
-                            <button className="btn btn-dash w-36 h-11 text-white border border-dotted border-white hover:border-none">Learn more</button>
+                            <button className="btn btn-dash w-36 h-11 text-white border border-dotted border-white hover:border-none ">Learn more</button>
                         </Link>
                     </div>
                 </div>

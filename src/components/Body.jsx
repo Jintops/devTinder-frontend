@@ -34,11 +34,11 @@ const Body = () => {
   }, []);
 
   // Hide Navbar and Footer on the login page
-  const hideNavFooter = location.pathname === "/login";
+  // const hideNavFooter = location.pathname === "/login";
 
   return (
     <div >
-      {!hideNavFooter && <Header />}
+      {<Header />}
       <Outlet />
      
     </div>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from "react-router";
 import { removeUser } from '../utils/userSlice';
 import axios from 'axios';
+import { BASE_URL } from '../utils/constants';
 
 const Header = () => {
 
@@ -23,7 +24,7 @@ const Header = () => {
   }
 
   return (
-   <header className="min-h-16 px-3 sm:px-5 w-full bg-color-1 shadow-md shadow-primary/30">
+   <header className="min-h-16 px-3 sm:px-5  bg-color-1 shadow-md shadow-indigo-500/50">
             <div className="navbar container mx-auto">
                 <div className="flex-1">
                     <Link
@@ -76,7 +77,7 @@ const Header = () => {
                         </div>
                     </div>
                 ) : (
-                    <button className="btn bg-indigo-600 text-white">
+                    <button className="btn bg-indigo-600 hover:bg-indigo-700 text-white">
                         <Link to="/login">Log In</Link>
                     </button>
                 )}
