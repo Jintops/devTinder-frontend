@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { removeUser } from '../utils/userSlice';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
+import { FaCode } from "react-icons/fa";
 
 const NavBar = () => {
 
@@ -26,12 +27,18 @@ const NavBar = () => {
 
   return (
     <div className="navbar bg-base-300">
-      <div className="flex-1">
-        <h1 className='btn btn-ghost text-xl bg-slate-800'>🧑‍💻DevTinder</h1>
-      </div>
+         <div className="flex-1">
+                    <Link
+                        to="/"
+                        className="flex items-center gap-1 sm:gap-2 font-bold text-lg sm:text-xl">
+                        <FaCode className="w-5 h-5 sm:h-6 sm:w-6" />
+                        <span>DevTinder</span>
+                    </Link>
+                </div>
       <div>
      {!user && <button className=" btn  bg-slate-800 hover:bg-gray-700 text-white" onClick={handleLogin}>Login</button>}
       </div>
+      
       {user && <div className=''>
         <p className='font-bold'> Welcome, {user.firstName}</p>
       </div>}
