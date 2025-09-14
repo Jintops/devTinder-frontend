@@ -51,7 +51,7 @@ const Login = () => {
 
   return (
     <div className='flex justify-center my-28'>
-      <div className="card bg-base-200 w-96 shadow-xl ">
+      <div className="card  w-96 shadow-xl ">
         <div className="card-body">
           <h2 className="card-title justify-center text-2xl font-bold text-white">{isLogin ? "Login" : "Create Account"} </h2>
 
@@ -86,7 +86,7 @@ const Login = () => {
           <p className='text-red-500'>{error}</p>
 
           <div className="card-actions justify-center my-2">
-            <button className="btn bg-pink-500 w-full max-w-xs text-white hover:bg-pink-600" onClick={isLogin ? handleLogin : handleSignUp}>{isLogin ? "Login" : "SignUp "}</button>
+            <button className="btn bg-indigo-600 w-full max-w-xs text-white hover:bg-indigo-700" onClick={isLogin ? handleLogin : handleSignUp}>{isLogin ? "Login" : "SignUp "}</button>
           </div>
 
           <div className="">
@@ -94,14 +94,14 @@ const Login = () => {
               {isLogin ? (
                 <>
                   Don't have an account?{" "}
-                  <span className="text-pink-400 hover:text-pink-500 font-semibold">
+                  <span className="text-indigo-600 hover:text-indigo-700 font-semibold">
                     Register here
                   </span>
                 </>
               ) : (
                 <>
                   You have an account?{" "}
-                  <span className="text-pink-400 hover:text-blue-500 font-semibold">
+                  <span className="text-indigo-600 hover:text-blue-500 font-semibold">
                      Login here
                   </span>
                 </>

@@ -22,7 +22,18 @@ const Feed = () => {
   }, [])
 
   if (!feed) return;
-  if (feed.length === 0) return <h1 className='text-center text-3xl my-10 font-bold'>No New User found!!</h1>
+  if (feed.length === 0) return (
+    <div className="text-center">
+                    <h2 className="sm:text-3xl text-2xl my-10 font-bold text-neutral-content">No New Users Found!</h2>
+                    <img
+                        loading="lazy"
+                        src="/public/asset/empty-feed.svg"
+                        alt="user-not-found"
+                        className="block mx-auto w-96"
+                    />
+                </div>
+  )
+   
   return (
     feed &&
     <div className='flex justify-center items-center my-20 '>

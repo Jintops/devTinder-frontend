@@ -34,10 +34,15 @@ const Requests = () => {
 
   if (requests.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-gray-100">
-        <h1 className="text-3xl font-bold">No Requests Found!!</h1>
-        <p className="text-gray-400 mt-4">You have no pending connection requests at the moment</p>
-      
+      <div className="text-center">
+        <h1 className="sm:text-3xl text-2xl mt-10 font-bold text-white">No Requests Found!!</h1>
+        <p className="sm:text-3xl text-2xl mt-2 font-bold text-white">You have no pending connection requests at the moment</p>
+        <img
+                        loading="lazy"
+                        src="/public/asset/empty-requests.svg"
+                        alt="user-not-found"
+                        className="block mx-auto w-96"
+                    />
       </div>
     );
   }
