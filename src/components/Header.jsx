@@ -77,9 +77,9 @@ const Header = () => {
                         </div>
                     </div>
                 ) : (
-                    <button className="btn bg-indigo-600 hover:bg-indigo-700 text-white">
-                        <Link to="/login">Log In</Link>
-                    </button>
+                  <Link to="/login">  <button className="btn bg-indigo-600 hover:bg-indigo-700 text-white">
+                        Log In
+                    </button></Link>
                 )}
             </div>
         </header>

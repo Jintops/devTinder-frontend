@@ -52,7 +52,7 @@ const EditProfile = ({ user }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen px-4 bg-gray-900 text-white">
+    <div className="flex flex-col justify-center items-center min-h-screen px-4  text-white">
       <div className="flex flex-col lg:flex-row w-full max-w-5xl  shadow-lg rounded-lg p-6 gap-6 my-10">
 
         {/* Profile Edit Form */}
@@ -137,7 +137,7 @@ const EditProfile = ({ user }) => {
 
       {/* Toast Notification */}
       {showToast && (
-        <div className="fixed bottom-4 right-4 bg-pink-600 text-white py-2 px-4 rounded-md shadow-lg">
+        <div className="fixed bottom-4 right-4 bg-indigo-600 text-white py-2 px-4 rounded-md shadow-lg">
           Profile updated successfully.
         </div>
       )}

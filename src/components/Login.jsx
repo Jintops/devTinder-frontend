@@ -51,7 +51,7 @@ const Login = () => {
 
   return (
     <div className='flex justify-center my-28'>
-      <div className="card  w-96 shadow-xl ">
+      <div className="card  w-96 shadow-xl border border-indigo-700/50">
         <div className="card-body">
           <h2 className="card-title justify-center text-2xl font-bold text-white">{isLogin ? "Login" : "Create Account"} </h2>
 
@@ -101,7 +101,7 @@ const Login = () => {
               ) : (
                 <>
                   You have an account?{" "}
-                  <span className="text-indigo-600 hover:text-blue-500 font-semibold">
+                  <span className="text-indigo-600 hover:text-indigo-700 font-semibold">
                      Login here
                   </span>
                 </>

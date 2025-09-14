@@ -27,10 +27,10 @@ const HeroSection = () => {
                 </div>
                 <div className="flex-1">
                     <img
-                        src="/public/asset/hero-img (1).png"
+                        src="/public/asset/deveoper.png"
                         loading="lazy"
                         alt="hero-img"
-                        className="block mx-auto"
+                        className="block w-[630px]"
                     />
                 </div>
             </div>

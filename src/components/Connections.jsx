@@ -41,7 +41,7 @@ const Connections = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 py-10">
+    <div className="min-h-screen  text-gray-100 py-10">
       <h1 className="text-center text-4xl font-extrabold mb-8">
         Your Connections
       </h1>
@@ -52,7 +52,7 @@ const Connections = () => {
           return (
             <div
               key={_id}
-              className="bg-gray-800 rounded-lg shadow-lg p-6 flex items-center gap-4 hover:bg-gray-700 transition-colors"
+              className="bg-gray-800/50 rounded-lg shadow-lg p-6 flex items-center gap-4  transition-colors"
             >
               <img
                 className="rounded-full w-24 h-24 border-4  object-cover"
@@ -80,7 +80,7 @@ const Connections = () => {
                 )}
               </div>
               <div> 
-               <Link to={"/chat/"+_id}> <button className='btn btn-secondary'>Chat</button></Link>
+               <Link to={"/chat/"+_id}> <button className='btn bg-indigo-600 hover:bg-indigo-700 text-white'>Chat</button></Link>
                  </div>
             </div>
           );
