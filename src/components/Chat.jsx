@@ -67,7 +67,7 @@ useEffect(()=>{
     }
 
   return (
-    <div className="flex flex-col items-center  min-h-screen bg-gray-900 px-4">
+    <div className="flex flex-col items-center   px-4">
   <div className="w-full max-w-xl border border-white rounded-lg shadow-lg my-24 bg-gray-800">
     {/* Header */}
     <div className="bg-gray-700 p-4 rounded-t-lg text-white text-xl font-bold text-center">

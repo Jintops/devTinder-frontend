@@ -52,11 +52,11 @@ const EditProfile = ({ user }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen px-4  text-white">
+    <div className="flex flex-col justify-center items-center  px-4  text-white">
       <div className="flex flex-col lg:flex-row w-full max-w-5xl  shadow-lg rounded-lg p-6 gap-6 my-10">
 
         {/* Profile Edit Form */}
-        <div className="w-full lg:w-1/2 bg-gray-900 border p-6 rounded-lg shadow-md">
+        <div className="w-full lg:w-1/2  border p-6 rounded-lg shadow-md">
           <h2 className="text-2xl font-semibold text-center text-white mb-6">Edit Profile</h2>
 
           {/* First Name */}
@@ -125,7 +125,7 @@ const EditProfile = ({ user }) => {
 
           {/* Save Button */}
           <div className="text-center mt-4">
-            <button className="w-full bg bg-secondary text-white py-2 rounded-md hover:bg-green-400  transition" onClick={saveProfile}>Save Profile</button>
+            <button className="w-full bg bg-indigo-600  text-white py-2 rounded-md hover:bg-green-400  transition" onClick={saveProfile}>Save Profile</button>
           </div>
         </div>
 

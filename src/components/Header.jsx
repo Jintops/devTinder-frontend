@@ -37,7 +37,7 @@ const Header = () => {
                 {user ? (
                     <div className="flex items-center gap-4 text-sm">
                         <p className="sm:block hidden">
-                            Welcome, <b>{user?.name}</b>
+                            Welcome, <b>{user?.firstName}</b>
                         </p>
 
                         <div className="dropdown dropdown-end">

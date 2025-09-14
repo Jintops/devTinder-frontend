@@ -29,7 +29,7 @@ const Connections = () => {
     return (
       <div className="text-center">
         <h1 className="sm:text-3xl text-2xl mt-10 font-bold text-white">No Connections Found</h1>
-        <p className="sm:text-3xl text-2xl mt-2 font-bold text-white">Start connecting with other developers!</p>
+        <p className="sm:text-3xl text-2xl mt-5 font-bold text-white">Start connecting with other developers!</p>
        <img
                         loading="lazy"
                         src="/public/asset/empty-connections.svg"
@@ -41,7 +41,7 @@ const Connections = () => {
   }
 
   return (
-    <div className="min-h-screen  text-gray-100 py-10">
+    <div className=" text-gray-100 py-10">
       <h1 className="text-center text-4xl font-extrabold mb-8">
         Your Connections
       </h1>
@@ -52,7 +52,7 @@ const Connections = () => {
           return (
             <div
               key={_id}
-              className="bg-gray-800/50 rounded-lg shadow-lg p-6 flex items-center gap-4  transition-colors"
+              className="bg-gray-800/50 hover:bg-gray-800/30 rounded-lg shadow-lg p-6 flex items-center gap-4  transition-colors"
             >
               <img
                 className="rounded-full w-24 h-24 border-4  object-cover"
@@ -69,13 +69,13 @@ const Connections = () => {
                   </p>
                 )}
                 {gender && (
-                  <p className="text-sm text-gray-400">
-                    <span className="font-medium text-gray-200">Gender:</span> {gender}
+                  <p className="text-sm text-white">
+                    <span className="font-medium text-gray-300">Gender:</span> {gender}
                   </p>
                 )}
                 {about && (
-                  <p className="text-sm text-gray-300 mt-2">
-                    <span className="font-medium text-gray-200">About:</span> {about}
+                  <p className="text-sm text-white mt-2">
+                    <span className="font-medium text-gray-300">About:</span> {about}
                   </p>
                 )}
               </div>

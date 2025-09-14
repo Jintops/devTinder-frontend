@@ -36,7 +36,7 @@ const Requests = () => {
     return (
       <div className="text-center">
         <h1 className="sm:text-3xl text-2xl mt-10 font-bold text-white">No Requests Found!!</h1>
-        <p className="sm:text-3xl text-2xl mt-2 font-bold text-white">You have no pending connection requests at the moment</p>
+        <p className="sm:text-3xl text-2xl mt-5 font-bold text-white">You have no pending connection requests at the moment</p>
         <img
                         loading="lazy"
                         src="/public/asset/empty-requests.svg"
@@ -48,9 +48,9 @@ const Requests = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 py-8">
+    <div className="  text-gray-100 py-8">
       <h1 className="text-center text-3xl font-bold mb-6">Connection Requests</h1>
-      <div className="max-w-4xl mx-auto bg-gray-800 rounded-lg shadow-md p-4">
+      <div className="max-w-4xl mx-auto bg-gray-800/50 rounded-lg shadow-md p-4">
         {requests.map((request) => {
           const { _id, firstName, lastName, photoUrl, age, gender, about } = request.fromUserId;
 
