@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { FaMapMarkerAlt } from "react-icons/fa"; 
 
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
@@ -79,7 +80,7 @@ const EditProfile = ({ user }) => {
 
   {/* Last Name */}
   <div className="mb-5">
-    <label className="block text-gray-300 font-medium mb-2">📍Location</label>
+    <label className=" text-gray-300 font-medium mb-2 flex items-center gap-1  drop-shadow-md "><FaMapMarkerAlt className="text-gray-400" />Location</label>
     <input
       type="text"
       value={location}

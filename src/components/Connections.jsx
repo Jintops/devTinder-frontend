@@ -85,7 +85,7 @@ const Connections = () => {
               </div>
               </div>
               <div> 
-               <Link to={"/chat/"+_id}> <button className='btn bg-indigo-600 hover:bg-indigo-700 text-white'>Chat</button></Link>
+               <Link to={"/chat/"+_id}   state={{ photoUrl, firstName, location }}> <button className='btn bg-indigo-600 hover:bg-indigo-700 text-white'>Chat</button></Link>
                  </div>
             </div>
           );
