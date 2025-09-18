@@ -3,9 +3,9 @@ import React from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeOneUser } from "../utils/feedSlice";
-
+import { FaMapMarkerAlt } from "react-icons/fa"; 
 const UserCard = ({ data }) => {
-  const { _id, firstName, lastName, photoUrl, skills, gender, about } = data;
+  const { _id, firstName, lastName, photoUrl, skills, gender, about, age, location } = data;
   const dispatch = useDispatch();
 
   const handleSendRequest = async (status, userId) => {
@@ -22,36 +22,55 @@ const UserCard = ({ data }) => {
   };
 
   return (
-    <div className="p-4">
-      <div className="card w-80 shadow-xl bg-gradient-to-r from-gray-800 via-blue-900 to-gray-900 text-white rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
-        <figure className="p-4 flex justify-center">
+    <div className="p-4 flex justify-center items-center">
+      <div className="lg:w-96 rounded-2xl overflow-hidden shadow-lg 
+        bg-gradient-to-br from-[#2c2c34] via-[#1f1f29] to-[#141418] 
+        text-white backdrop-blur-lg border border-gray-700/50 
+        transform hover:scale-105 hover:shadow-2xl transition-all duration-300 ">
+
+        {/* Profile Section */}
+        <div className="relative w-full h-72">
           <img
-            className="w-32 h-32 object-cover rounded-full border-4 shadow-md"
-            src={photoUrl}
+            className="w-full h-full object-cover"
+            src={photoUrl || "/no-image.png"}
             alt="profile"
           />
-        </figure>
+          {/* Overlay content */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 
+                  bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+    <h1 className="font-bold text-2xl text-white drop-shadow-md">
+      {firstName} {lastName && lastName} {age}
+    </h1>
+    
+     <p className="flex items-center gap-1 text-sm text-gray-200 drop-shadow-md mt-1">
+        <FaMapMarkerAlt className="text-white" /> kannur
+      </p>
+    
+  </div>
+        </div>
 
-<div className="card-body flex justify-center items-center">
-  {firstName && (
-    <h2 className="card-title text-xl font-bold">
-      {lastName ? `${firstName} ${lastName}` : firstName}
-    </h2>
-  )}
+        {/* Card Body */}
+        <div className="card-body text-center px-6 py-4">
+          {/* {gender && <p className="text-sm text-gray-400">{gender}</p>} */}
 
+          {/* About */}
+          <p className="text-sm text-gray-300 mt-2 line-clamp-3">
+            {about || "No description available."}
+          </p>
 
-
-          {gender && <p className="text-gray-300">{gender}</p>}
-          <p className="text-sm text-gray-300 mt-2">{about}</p>
-
-          {skills.length !== 0 && (
-            <div className="mt-3 text-center">
-              <h3 className="font-semibold text-gray-200">Skills:</h3>
-              <div className="flex flex-wrap gap-2 justify-center mt-1">
+          {/* Skills */}
+          {skills?.length > 0 && (
+            <div className="mt-4">
+              <h3 className="text-sm font-semibold text-gray-300 mb-2">
+                Skills
+              </h3>
+              <div className="flex flex-wrap gap-2 justify-center">
                 {skills.map((skill, index) => (
                   <span
                     key={index}
-                    className="-600 text-white text-xs px-3 py-1 rounded-full shadow-sm"
+                    className="px-3 py-1 text-xs rounded-full 
+                      bg-gradient-to-r from-purple-600 to-indigo-600 
+                      text-white shadow-md"
                   >
                     {skill}
                   </span>
@@ -60,18 +79,23 @@ const UserCard = ({ data }) => {
             </div>
           )}
 
-          <div className="card-actions justify-center mt-4">
+          {/* Actions */}
+          <div className="flex justify-center gap-6 mt-8">
             <button
-              className="btn btn-outline btn-error w-28 transition-all duration-300 hover:bg-red-600"
+              className="flex items-center justify-center w-12 h-12 rounded-full 
+                border border-red-500 text-red-400 hover:bg-red-600 hover:text-white 
+                transition-all duration-300 shadow-md"
               onClick={() => handleSendRequest("ignored", _id)}
             >
-            X  Ignore
+              ❌
             </button>
             <button
-              className="btn btn-outline btn-success w-32 transition-all duration-300 hover:bg-green-600"
+              className="flex items-center justify-center w-12 h-12 rounded-full 
+                border border-green-500 text-green-400 hover:bg-green-600 hover:text-white 
+                transition-all duration-300 shadow-md"
               onClick={() => handleSendRequest("interested", _id)}
             >
-             💚 Interested
+              💚
             </button>
           </div>
         </div>

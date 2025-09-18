@@ -65,7 +65,7 @@ const Premium = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
 
         {/* Silver Membership */}
-        <div className="backdrop-blur-md bg-white/10 border border-gray-600 rounded-2xl p-8 shadow-lg hover:scale-[1.02] transition-transform">
+        <div className="backdrop-blur-md bg-white/10 border border-blue-700 rounded-2xl p-8 shadow-lg hover:scale-[1.02] transition-transform">
           <h2 className="text-3xl font-semibold text-center text-blue-300 mb-4">Silver Membership</h2>
           <p className="text-center text-gray-300 mb-6">₹199/month</p>
           <ul className="space-y-3 text-sm text-gray-200">

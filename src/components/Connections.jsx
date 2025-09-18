@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
-
+ 
   const dispatch = useDispatch();
 
   const fetchConnections = async () => {
