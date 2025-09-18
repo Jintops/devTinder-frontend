@@ -5,7 +5,8 @@ import { useDispatch } from "react-redux";
 import { removeOneUser } from "../utils/feedSlice";
 import { FaMapMarkerAlt } from "react-icons/fa"; 
 const UserCard = ({ data }) => {
-  const { _id, firstName, lastName, photoUrl, skills, gender, about, age, location } = data;
+  const { _id, firstName, photoUrl, skills,  about,  location } = data;
+  
   const dispatch = useDispatch();
 
   const handleSendRequest = async (status, userId) => {
@@ -39,11 +40,11 @@ const UserCard = ({ data }) => {
             <div className="absolute bottom-0 left-0 right-0 p-4 
                   bg-gradient-to-t from-black/90 via-black/50 to-transparent">
     <h1 className="font-bold text-2xl text-white drop-shadow-md">
-      {firstName} {lastName && lastName} {age}
+      {firstName} 
     </h1>
     
      <p className="flex items-center gap-1 text-sm text-gray-200 drop-shadow-md mt-1">
-        <FaMapMarkerAlt className="text-white" /> kannur
+        <FaMapMarkerAlt className="text-white" />{location}
       </p>
     
   </div>

@@ -7,7 +7,7 @@ import { addUser } from '../utils/userSlice';
 
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastname] = useState(user.lastName);
+  const [location, setLocation] = useState(user.location);
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
   const [skills, setSkills] = useState(user.skills || []);
   const [gender, setGender] = useState(user.gender || "");
@@ -23,7 +23,7 @@ const EditProfile = ({ user }) => {
     try {
       const res = await axios.patch(BASE_URL + "/profile/edit", {
         firstName,
-        lastName,
+        location,
         photoUrl,
         skills,
         gender,
@@ -79,15 +79,15 @@ const EditProfile = ({ user }) => {
 
   {/* Last Name */}
   <div className="mb-5">
-    <label className="block text-gray-300 font-medium mb-2">Last Name</label>
+    <label className="block text-gray-300 font-medium mb-2">📍Location</label>
     <input
       type="text"
-      value={lastName}
-      onChange={(e) => setLastname(e.target.value)}
+      value={location}
+      onChange={(e) => setLocation(e.target.value)}
       className="w-full p-3 bg-gray-900/70 border border-gray-600 rounded-lg 
                  text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 
                  transition"
-      placeholder="Enter your last name"
+      placeholder="Enter your location"
     />
   </div>
 
@@ -202,7 +202,7 @@ const EditProfile = ({ user }) => {
 
         {/* Preview Card */}
         <div className="w-full lg:w-1/2 flex justify-center">
-          <UserCard data={{ firstName, lastName, skills, photoUrl, gender, about }} />
+          <UserCard data={{ firstName, location, skills, photoUrl, gender, about }} />
         </div>
       </div>
 

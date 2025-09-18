@@ -10,7 +10,7 @@ const Login = () => {
   const [emailId, setEmailId] = useState("vini@gmail.com");
   const [password, setPassword] = useState("Vini@777");
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastname] = useState("");
+  const [location, setLocation] = useState("");
   const [error, setError] = useState("");
   const [isLogin, setIsLogin] = useState(true)
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const Login = () => {
 
   const handleSignUp = async () => {
     try {
-      const res = await axios.post(BASE_URL + "/signup", { firstName, emailId, password }, { withCredentials: true })
+      const res = await axios.post(BASE_URL + "/signup", { firstName, emailId, password,location }, { withCredentials: true })
       dispatch(addUser(res.data.data))
       return navigate("/profile")
     } catch (err) {
@@ -61,13 +61,13 @@ const Login = () => {
             </div>
             <input type="text" value={firstName} className="input input-bordered w-full max-w-xs text-white" placeholder='Enter your first name' onChange={(e) => setFirstName(e.target.value)} />
           </label>
-          </>}
-          {/* <label className="form-control w-full max-w-xs">
+         
+          <label className="form-control w-full max-w-xs">
               <div className="label">
-                <span className="label-text text-white">Last Name</span>
+                <span className="label-text text-white">Location</span>
               </div>
-              <input type="text" value={lastName} className="input input-bordered w-full max-w-xs" onChange={(e) => setLastname(e.target.value)} />
-            </label> */}
+              <input type="text" value={location} className="input input-bordered w-full max-w-xs text-white " placeholder='Enter your location' onChange={(e) => setLocation(e.target.value)} />
+            </label> </>}
 
 
           <label className="form-control w-full max-w-xs mt-4 my-4">

@@ -53,11 +53,11 @@ return (
 
     <div className="max-w-4xl mx-auto grid gap-6">
       {requests.map((request) => {
-        const { firstName, lastName, photoUrl, age, gender, about } = request.fromUserId;
+        const { firstName, location, photoUrl, age, gender, about } = request?.fromUserId;
 
         return (
           <div
-            key={request._id}
+            key={request?._id}
             className="bg-gray-800/60 rounded-lg shadow-md p-5 flex items-center justify-between"
           >
             {/* User Info */}
@@ -65,11 +65,11 @@ return (
               <img
                 className="rounded-full w-20 h-20 border-4 border-indigo-700 object-cover"
                 src={photoUrl}
-                alt={`${firstName} ${lastName}`}
+                alt={`${firstName}`}
               />
               <div>
                 <h2 className="text-lg font-medium">
-                  {firstName} {lastName}
+                  {firstName} 
                 </h2>
                 <div className="text-sm text-gray-400">
                   {age && <span className="mr-2">Age: {age}</span>}
@@ -83,13 +83,13 @@ return (
             <div className="flex gap-3">
               <button
                 className="px-4 py-2 bg-green-600 text-sm text-gray-100 rounded hover:bg-green-700 transition"
-                onClick={() => reviewRequests("accepted", request._id)}
+                onClick={() => reviewRequests("accepted", request?._id)}
               >
                 Accept
               </button>
               <button
                 className="px-4 py-2 bg-red-600 text-sm text-gray-100 rounded hover:bg-red-700 transition"
-                onClick={() => reviewRequests("rejected", request._id)}
+                onClick={() => reviewRequests("rejected", request?._id)}
               >
                 Reject
               </button>

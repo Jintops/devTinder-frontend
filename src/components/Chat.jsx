@@ -29,7 +29,7 @@ const fetchChatMessages=async()=>{
  const chatMessages=chat?.data?.messages?.map((msg)=>{
     const {senderId,text}=msg;
     return{
-        firstName:senderId.firstName,lastName:senderId.lastName,text
+        firstName:senderId.firstName,location:senderId.location,text
 
     }
  })
@@ -49,9 +49,9 @@ useEffect(()=>{
 
    socket.emit('joinChat',{userId,targetUserId})
 
-    socket.on("messageReceiver",({firstName,lastName,text})=>{
+    socket.on("messageReceiver",({firstName,location,text})=>{
         console.log(firstName+":"+text)
-        setMessages((messages)=>[...messages,{firstName,lastName,text}])
+        setMessages((messages)=>[...messages,{firstName,location,text}])
     })
 
     return ()=>{
@@ -62,7 +62,7 @@ useEffect(()=>{
 
     const sendMessage=()=>{
          const socket=createSocketConnection();
-        socket.emit("sendMessage",{firstName:user.firstName,lastName:user.lastName,targetUserId,userId,text:newMessage})
+        socket.emit("sendMessage",{firstName:user.firstName,location:user.location,targetUserId,userId,text:newMessage})
         setNewMessage("")
     }
 
@@ -93,7 +93,7 @@ useEffect(()=>{
               )}
               <div className={`chat-bubble ${isUser ? "bg-blue-600 text-white" : "bg-gray-200 text-black"} px-4 py-2 rounded-lg shadow-md`}>
                 <div className="text-xs font-semibold opacity-80">
-                  {msg.firstName} {msg.lastName}
+                  {msg.firstName} {msg.location}
                 </div>
                 <div className="text-sm">{msg.text}</div>
                 <div className="text-right text-xs opacity-50 mt-1">

@@ -47,7 +47,7 @@ const Connections = () => {
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
         {connections.map((connection) => {
-          const { _id, firstName, lastName, photoUrl, age, gender, about } = connection;
+          const { _id, firstName, location, photoUrl, age, gender, about } = connection;
 
           return (
             <div
@@ -58,11 +58,14 @@ const Connections = () => {
               <img
                 className="rounded-full w-24 h-24 border-4 border-indigo-700  object-cover"
                 src={photoUrl}
-                alt={`${firstName} ${lastName}`}
+                alt={`${firstName} `}
               />
               <div>
                 <h2 className="text-lg font-semibold">
-                  {firstName} {lastName}
+                  {firstName} 
+                </h2>
+                <h2 className="text-md text-gray-400 font-semibold">
+                  📍{location}
                 </h2>
                 {age && (
                   <p className="text-sm text-gray-400">
