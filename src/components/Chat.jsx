@@ -93,7 +93,7 @@ useEffect(()=>{
               )}
               <div className={`chat-bubble ${isUser ? "bg-blue-600 text-white" : "bg-gray-200 text-black"} px-4 py-2 rounded-lg shadow-md`}>
                 <div className="text-xs font-semibold opacity-80">
-                  {msg.firstName} {msg.location}
+                  {msg.firstName} 
                 </div>
                 <div className="text-sm">{msg.text}</div>
                 <div className="text-right text-xs opacity-50 mt-1">

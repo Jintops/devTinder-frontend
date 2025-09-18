@@ -65,7 +65,7 @@ const EditProfile = ({ user }) => {
 
   {/* First Name */}
   <div className="mb-5">
-    <label className="block text-gray-300 font-medium mb-2">First Name</label>
+    <label className="block text-gray-300 font-medium mb-2">Full Name</label>
     <input
       type="text"
       value={firstName}
@@ -73,7 +73,7 @@ const EditProfile = ({ user }) => {
       className="w-full p-3 bg-gray-900/70 border border-gray-600 rounded-lg 
                  text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 
                  transition"
-      placeholder="Enter your first name"
+      placeholder="Enter your full name"
     />
   </div>
 

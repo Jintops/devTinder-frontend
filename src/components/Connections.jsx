@@ -4,7 +4,7 @@ import { BASE_URL } from '../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { addConnections } from '../utils/connectionSlice'
 import { Link } from 'react-router-dom'
-
+import { FaMapMarkerAlt } from "react-icons/fa"; 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
  
@@ -61,22 +61,22 @@ const Connections = () => {
                 alt={`${firstName} `}
               />
               <div>
-                <h2 className="text-lg font-semibold">
+                <h2 className="text-lg font-semibold ml-[2px]">
                   {firstName} 
                 </h2>
-                <h2 className="text-md text-gray-400 font-semibold">
-                  📍{location}
-                </h2>
+               <p className="flex items-center gap-1 text-sm text-gray-400 drop-shadow-md mt-1">
+                      <FaMapMarkerAlt className="text-gray-400" />{location}
+                    </p>
                 {age && (
                   <p className="text-sm text-gray-400">
                     <span className="font-medium text-gray-200">Age:</span> {age}
                   </p>
                 )}
-                {gender && (
+                {/* {gender && (
                   <p className="text-sm text-white">
                     <span className="font-medium text-gray-300">Gender:</span> {gender}
                   </p>
-                )}
+                )} */}
                 {about && (
                   <p className="text-sm text-white mt-2">
                     <span className="font-medium text-gray-300"></span> {about}

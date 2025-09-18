@@ -57,9 +57,9 @@ const Login = () => {
 
           {!isLogin && <><label className="form-control w-full max-w-xs mt-6">
             <div className="label" >
-              <span className="label-text text-white">First Name</span>
+              <span className="label-text text-white">Full Name</span>
             </div>
-            <input type="text" value={firstName} className="input input-bordered w-full max-w-xs text-white" placeholder='Enter your first name' onChange={(e) => setFirstName(e.target.value)} />
+            <input type="text" value={firstName} className="input input-bordered w-full max-w-xs text-white" placeholder='Enter your full name' onChange={(e) => setFirstName(e.target.value)} />
           </label>
          
           <label className="form-control w-full max-w-xs">

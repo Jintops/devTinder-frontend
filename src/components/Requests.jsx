@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { BASE_URL } from '../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { addRequests, removeRequest } from '../utils/requestSlice'
+import { FaMapMarkerAlt } from "react-icons/fa"; 
 
 const Requests = () => {
   const requests = useSelector((store) => store.requests);
@@ -68,13 +69,16 @@ return (
                 alt={`${firstName}`}
               />
               <div>
-                <h2 className="text-lg font-medium">
+                <h2 className="text-lg font-medium ml-[2px]">
                   {firstName} 
                 </h2>
-                <div className="text-sm text-gray-400">
+                 <p className="flex items-center gap-1 text-sm text-gray-400 drop-shadow-md mt-1">
+                                      <FaMapMarkerAlt className="text-gray-400" />{location}
+                                    </p>
+                {/* <div className="text-sm text-gray-400">
                   {age && <span className="mr-2">Age: {age}</span>}
                   {gender && <span>{gender}</span>}
-                </div>
+                </div> */}
                 {about && <p className="text-sm text-gray-300 mt-1">{about}</p>}
               </div>
             </div>
