@@ -41,61 +41,66 @@ const Requests = () => {
                         loading="lazy"
                         src="/public/asset/empty-requests.svg"
                         alt="user-not-found"
-                        className="block mx-auto w-96"
+                        className="block mx-auto w-96 mt-20"
                     />
       </div>
     );
   }
 
-  return (
-    <div className="  text-gray-100 py-8">
-      <h1 className="text-center text-3xl font-bold mb-6">Connection Requests</h1>
-      <div className="max-w-4xl mx-auto bg-gray-800/50 rounded-lg shadow-md p-4">
-        {requests.map((request) => {
-          const { _id, firstName, lastName, photoUrl, age, gender, about } = request.fromUserId;
+return (
+  <div className="text-gray-100 py-8">
+    <h1 className="text-center text-3xl font-bold mb-6">Connection Requests</h1>
 
-          return (
-            <div
-              key={_id}
-              className="flex items-center justify-between p-4 border-b border-gray-700 last:border-none"
-            >
-              <div className="flex items-center gap-4">
-                <img
-                  className="rounded-full w-12 h-12 object-cover border-2 border-indigo-500"
-                  src={photoUrl}
-                  alt={`${firstName} ${lastName}`}
-                />
-                <div>
-                  <h2 className="text-lg font-medium">
-                    {firstName} {lastName}
-                  </h2>
-                  <div className="text-sm text-gray-400">
-                    {age && <span className="mr-2">Age: {age}</span>}
-                    {gender && <span>{gender}</span>}
-                  </div>
-                  {about && <p className="text-sm text-gray-300 mt-1">{about}</p>}
+    <div className="max-w-4xl mx-auto grid gap-6">
+      {requests.map((request) => {
+        const { firstName, lastName, photoUrl, age, gender, about } = request.fromUserId;
+
+        return (
+          <div
+            key={request._id}
+            className="bg-gray-800/60 rounded-lg shadow-md p-5 flex items-center justify-between"
+          >
+            {/* User Info */}
+            <div className="flex items-center gap-4">
+              <img
+                className="rounded-full w-20 h-20 border-4 border-indigo-700 object-cover"
+                src={photoUrl}
+                alt={`${firstName} ${lastName}`}
+              />
+              <div>
+                <h2 className="text-lg font-medium">
+                  {firstName} {lastName}
+                </h2>
+                <div className="text-sm text-gray-400">
+                  {age && <span className="mr-2">Age: {age}</span>}
+                  {gender && <span>{gender}</span>}
                 </div>
-              </div>
-              <div className="flex gap-3  ">
-                <button
-                  className="px-5 py-2 bg-green-600 text-sm text-gray-100 rounded hover:bg-green-700 transition"
-                  onClick={() => reviewRequests("accepted", request._id)}
-                >
-                  Accept
-                </button>
-                <button
-                  className="px-5 py-2 bg-red-600 text-sm text-gray-100 rounded hover:bg-red-700 transition"
-                  onClick={() => reviewRequests("rejected", request._id)}
-                >
-                  Reject
-                </button>
+                {about && <p className="text-sm text-gray-300 mt-1">{about}</p>}
               </div>
             </div>
-          );
-        })}
-      </div>
+
+            {/* Actions */}
+            <div className="flex gap-3">
+              <button
+                className="px-4 py-2 bg-green-600 text-sm text-gray-100 rounded hover:bg-green-700 transition"
+                onClick={() => reviewRequests("accepted", request._id)}
+              >
+                Accept
+              </button>
+              <button
+                className="px-4 py-2 bg-red-600 text-sm text-gray-100 rounded hover:bg-red-700 transition"
+                onClick={() => reviewRequests("rejected", request._id)}
+              >
+                Reject
+              </button>
+            </div>
+          </div>
+        );
+      })}
     </div>
-  );
+  </div>
+);
+
 };
 
 export default Requests;

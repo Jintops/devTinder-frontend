@@ -52,82 +52,153 @@ const EditProfile = ({ user }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center  px-4  text-white">
+    <div className="flex flex-col justify-center items-center  lg:px-4  text-white">
       <div className="flex flex-col lg:flex-row w-full max-w-5xl  shadow-lg rounded-lg p-6 gap-6 my-10">
 
         {/* Profile Edit Form */}
-        <div className="w-full lg:w-1/2  border p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold text-center text-white mb-6">Edit Profile</h2>
+      <div className="w-full lg:w-1/2 bg-gradient-to-br from-[#2c2c34] via-[#1f1f29] to-[#141418]
+                border border-indigo-700/30 p-8 rounded-2xl shadow-xl 
+                backdrop-blur-md">
+  <h2 className="text-3xl font-bold text-center text-white mb-8">
+    Edit Profile
+  </h2>
 
-          {/* First Name */}
-          <div className="mb-4">
-            <label className="text-gray-300 font-medium">First Name</label>
-            <input type="text" value={firstName} className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400" onChange={(e) => setFirstName(e.target.value)} />
-          </div>
+  {/* First Name */}
+  <div className="mb-5">
+    <label className="block text-gray-300 font-medium mb-2">First Name</label>
+    <input
+      type="text"
+      value={firstName}
+      onChange={(e) => setFirstName(e.target.value)}
+      className="w-full p-3 bg-gray-900/70 border border-gray-600 rounded-lg 
+                 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                 transition"
+      placeholder="Enter your first name"
+    />
+  </div>
 
-          {/* Last Name */}
-          <div className="mb-4">
-            <label className="text-gray-300 font-medium">Last Name</label>
-            <input type="text" value={lastName} className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400" onChange={(e) => setLastname(e.target.value)} />
-          </div>
+  {/* Last Name */}
+  <div className="mb-5">
+    <label className="block text-gray-300 font-medium mb-2">Last Name</label>
+    <input
+      type="text"
+      value={lastName}
+      onChange={(e) => setLastname(e.target.value)}
+      className="w-full p-3 bg-gray-900/70 border border-gray-600 rounded-lg 
+                 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                 transition"
+      placeholder="Enter your last name"
+    />
+  </div>
 
-          {/* Photo URL */}
-          <div className="mb-4">
-            <label className="text-gray-300 font-medium">Photo URL</label>
-            <input type="text" value={photoUrl} className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400" onChange={(e) => setPhotoUrl(e.target.value)} />
-          </div>
+  {/* Photo URL */}
+  <div className="mb-5">
+    <label className="block text-gray-300 font-medium mb-2">Profile Photo URL</label>
+    <input
+      type="text"
+      value={photoUrl}
+      onChange={(e) => setPhotoUrl(e.target.value)}
+      className="w-full p-3 bg-gray-900/70 border border-gray-600 rounded-lg 
+                 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                 transition"
+      placeholder="https://example.com/photo.jpg"
+    />
+  </div>
 
-          {/* Skills */}
-          <div className="mb-4">
-            <label className="text-gray-300 font-medium">Skills</label>
-            <div className="flex">
-              <input
-                type="text"
-                value={skillInput}
-                className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                placeholder="Enter skill & press add"
-                onChange={(e) => setSkillInput(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleAddSkill()}
-              />
-              <button className="ml-2 bg bg-gray-800 hover:bg-gray-700 border border-gray-400  text-white px-4 py-2 rounded-xl  transition" onClick={handleAddSkill}>Add</button>
-            </div>
+  {/* Skills */}
+  <div className="mb-5">
+    <label className="block text-gray-300 font-medium mb-2">Skills</label>
+    <div className="flex">
+      <input
+        type="text"
+        value={skillInput}
+        placeholder="Enter a skill"
+        onChange={(e) => setSkillInput(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleAddSkill()}
+        className="flex-1 p-3 bg-gray-900/70 border border-gray-600 rounded-lg 
+                   text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                   transition"
+      />
+      <button
+        onClick={handleAddSkill}
+        className="ml-3 px-5 py-1 bg-indigo-600 hover:bg-indigo-500 
+                   text-white rounded-lg transition font-medium"
+      >
+        Add
+      </button>
+    </div>
 
-            {/* Skills Display */}
-            <div className="flex flex-wrap gap-2 mt-3">
-              {skills.map((skill, index) => (
-                <span key={index} className="bg-[#154360] text-white px-3 py-1 rounded-full flex items-center">
-                  {skill}
-                  <button className="ml-2 text-white hover:text-red-300" onClick={() => handleRemoveSkill(skill)}>✕</button>
-                </span>
-              ))}
-            </div>
-          </div>
+    {/* Skill Tags */}
+    <div className="flex flex-wrap gap-2 mt-3">
+      {skills.map((skill, index) => (
+        <span
+          key={index}
+          className=" bg-indigo-500 border border-indigo-600/30 text-white px-4 py-1 rounded-full 
+                     flex items-center gap-2 shadow-sm"
+        >
+          {skill}
+          <button
+            onClick={() => handleRemoveSkill(skill)}
+            className="text-gray-200 hover:text-red-400 transition"
+          >
+            ✕
+          </button>
+        </span>
+      ))}
+    </div>
+  </div>
 
-          {/* Gender */}
-          <div className="mb-4">
-            <label className="text-gray-300 font-medium">Gender</label>
-            <select value={gender} onChange={(e) => setGender(e.target.value)} className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400">
-              <option value="" disabled>Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+  {/* Gender */}
+  {/* <div className="mb-5">
+    <label className="block text-gray-300 font-medium mb-2">Gender</label>
+    <select
+      value={gender}
+      onChange={(e) => setGender(e.target.value)}
+      className="w-full p-3 bg-gray-900/70 border border-gray-600 rounded-lg 
+                 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                 transition"
+    >
+      <option value="" disabled>
+        Select Gender
+      </option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+  </div> */}
 
-          {/* About */}
-          <div className="mb-4">
-            <label className="text-gray-300 font-medium">About</label>
-            <textarea value={about} className="w-full p-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400" onChange={(e) => setAbout(e.target.value)}></textarea>
-          </div>
+  {/* About */}
+  <div className="mb-5">
+    <label className="block text-gray-300 font-medium mb-2">About</label>
+    <textarea
+      value={about}
+      onChange={(e) => setAbout(e.target.value)}
+      className="w-full p-3 bg-gray-900/70 border border-gray-600 rounded-lg 
+                 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                 transition resize-none h-24"
+      placeholder="Write something about yourself..."
+    ></textarea>
+  </div>
 
-          {/* Error Message */}
-          {error && <p className="text-red-400 text-center">{error}</p>}
+  {/* Error */}
+  {error && (
+    <p className="text-red-400 text-center font-medium mb-4">{error}</p>
+  )}
 
-          {/* Save Button */}
-          <div className="text-center mt-4">
-            <button className="w-full bg bg-indigo-600  text-white py-2 rounded-md hover:bg-green-400  transition" onClick={saveProfile}>Save Profile</button>
-          </div>
-        </div>
+  {/* Save Button */}
+  <div className="text-center mt-6">
+    <button
+      onClick={saveProfile}
+      className="w-full bg-indigo-600
+                 hover:bg-indigo-700 text-white 
+                 py-3 rounded-lg font-semibold transition transform 
+                 hover:scale-105 shadow-lg"
+    >
+      Save Profile
+    </button>
+  </div>
+</div>
+
 
         {/* Preview Card */}
         <div className="w-full lg:w-1/2 flex justify-center">

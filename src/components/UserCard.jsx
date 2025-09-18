@@ -50,11 +50,11 @@ const UserCard = ({ data }) => {
         </div>
 
         {/* Card Body */}
-        <div className="card-body text-center px-6 py-4">
+        <div className="card-body  px-6 py-4">
           {/* {gender && <p className="text-sm text-gray-400">{gender}</p>} */}
 
           {/* About */}
-          <p className="text-sm text-gray-300 mt-2 line-clamp-3">
+          <p className="text-md  font-semibold text-white mt-2 line-clamp-3">
             {about || "No description available."}
           </p>
 
@@ -62,14 +62,14 @@ const UserCard = ({ data }) => {
           {skills?.length > 0 && (
             <div className="mt-4">
               <h3 className="text-sm font-semibold text-gray-300 mb-2">
-                Skills
+                Skills 
               </h3>
-              <div className="flex flex-wrap gap-2 justify-center">
+              <div className="flex flex-wrap gap-2 ">
                 {skills.map((skill, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 text-xs rounded-full 
-                      bg-gradient-to-r from-purple-600 to-indigo-600 
+                    className="px-3 py-1 text-sm rounded-3xl 
+                      bg-gradient-to-r from-indigo-500/20  to-purple-600/20 font-semibold border border-pink-500/30
                       text-white shadow-md"
                   >
                     {skill}

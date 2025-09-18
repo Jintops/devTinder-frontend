@@ -34,7 +34,7 @@ const Connections = () => {
                         loading="lazy"
                         src="/public/asset/empty-connections.svg"
                         alt="user-not-found"
-                        className="block mx-auto w-96"
+                        className="block mx-auto w-96 mt-20"
                     />
       </div>
     );
@@ -52,10 +52,11 @@ const Connections = () => {
           return (
             <div
               key={_id}
-              className="bg-gray-800/50 hover:bg-gray-800/30 rounded-lg shadow-lg p-6 flex items-center gap-4  transition-colors"
+              className="bg-gray-800/50 hover:bg-gray-800/30 rounded-lg shadow-lg p-6 flex items-center justify-between transition-colors"
             >
+              <div className='flex gap-4'>
               <img
-                className="rounded-full w-24 h-24 border-4  object-cover"
+                className="rounded-full w-24 h-24 border-4 border-indigo-700  object-cover"
                 src={photoUrl}
                 alt={`${firstName} ${lastName}`}
               />
@@ -75,9 +76,10 @@ const Connections = () => {
                 )}
                 {about && (
                   <p className="text-sm text-white mt-2">
-                    <span className="font-medium text-gray-300">About:</span> {about}
+                    <span className="font-medium text-gray-300"></span> {about}
                   </p>
                 )}
+              </div>
               </div>
               <div> 
                <Link to={"/chat/"+_id}> <button className='btn bg-indigo-600 hover:bg-indigo-700 text-white'>Chat</button></Link>

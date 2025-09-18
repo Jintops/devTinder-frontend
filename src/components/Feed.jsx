@@ -29,7 +29,7 @@ const Feed = () => {
                         loading="lazy"
                         src="/public/asset/empty-feed.svg"
                         alt="user-not-found"
-                        className="block mx-auto w-96"
+                        className="block mx-auto w-96 mt-20"
                     />
                 </div>
   )
