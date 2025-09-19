@@ -21,7 +21,7 @@ const Chat = () => {
   }, [messages]);
 
   const fetchChatMessages = async () => {
-    const chat = await axios.get(BASE_URL + "/chat/" + targetUserId, {
+  const chat = await axios.get(`${BASE_URL}/api/chat/${targetUserId}`, {
       withCredentials: true,
     });
     const chatMessages = chat?.data?.messages?.map((msg) => {
