@@ -24,7 +24,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post(BASE_URL + "/login", {
+      const res = await axios.post(BASE_URL + "/api/login", {
         emailId,
         password
       }, {
@@ -41,7 +41,7 @@ const Login = () => {
 
   const handleSignUp = async () => {
     try {
-      const res = await axios.post(BASE_URL + "/signup", { firstName, emailId, password,location }, { withCredentials: true })
+      const res = await axios.post(BASE_URL + "/api/signup", { firstName, emailId, password,location }, { withCredentials: true })
       dispatch(addUser(res.data.data))
       return navigate("/profile")
     } catch (err) {
