@@ -47,7 +47,7 @@ const Connections = () => {
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
         {connections.map((connection) => {
-          const { _id, firstName, location, photoUrl, age, gender, about } = connection;
+          const { _id, firstName, location, photoUrl, age, about } = connection;
 
           return (
             <div
@@ -64,7 +64,7 @@ const Connections = () => {
                 <h2 className="text-lg font-semibold ml-[2px]">
                   {firstName} 
                 </h2>
-               <p className="flex items-center gap-1 text-sm text-gray-400 drop-shadow-md mt-1">
+               <p className="flex items-center gap-1 text-sm text-gray-400 drop-shadow-md ">
                       <FaMapMarkerAlt className="text-gray-400" />{location}
                     </p>
                 {age && (
@@ -85,7 +85,7 @@ const Connections = () => {
               </div>
               </div>
               <div> 
-               <Link to={"/chat/"+_id}   state={{ photoUrl, firstName, location }}> <button className='btn bg-indigo-600 hover:bg-indigo-700 text-white'>Chat</button></Link>
+               <Link to={"/chat/"+_id}   state={{ photoUrl, firstName, location }}> <button className='btn bg-indigo-600 hover:bg-indigo-700 text-white '>Chat</button></Link>
                  </div>
             </div>
           );
