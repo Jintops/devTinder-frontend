@@ -29,7 +29,7 @@ const Feed = () => {
                     <h2 className="sm:text-3xl text-2xl my-10 font-bold text-neutral-content">No New Users Found!</h2>
                     <img
                         loading="lazy"
-                        src="/public/asset/empty-feed.svg"
+                        src="/asset/empty-feed.svg"
                         alt="user-not-found"
                         className="block mx-auto w-96 mt-20"
                     />

@@ -40,7 +40,7 @@ const Requests = () => {
         <p className="sm:text-3xl text-2xl mt-5 font-bold text-white">You have no pending connection requests at the moment</p>
         <img
                         loading="lazy"
-                        src="/public/asset/empty-requests.svg"
+                        src="/asset/empty-requests.svg"
                         alt="user-not-found"
                         className="block mx-auto w-96 mt-20"
                     />
@@ -59,10 +59,10 @@ return (
         return (
           <div
             key={request?._id}
-            className="bg-gray-800/60 rounded-lg shadow-md p-5 flex items-center justify-between"
+            className="bg-gray-800/60 rounded-lg shadow-md p-5 flex items-center justify-between mx-4"
           >
             {/* User Info */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 ">
               <img
                 className="rounded-full w-20 h-20 border-4 border-indigo-700 object-cover"
                 src={photoUrl}

@@ -32,7 +32,7 @@ const Connections = () => {
         <p className="sm:text-3xl text-2xl mt-5 font-bold text-white">Start connecting with other developers!</p>
        <img
                         loading="lazy"
-                        src="/public/asset/empty-connections.svg"
+                        src="/asset/empty-connections.svg"
                         alt="user-not-found"
                         className="block mx-auto w-96 mt-20"
                     />
