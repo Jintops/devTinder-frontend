@@ -20,7 +20,7 @@ const Requests = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/api/user/requests/receivedv`, { withCredentials: true });
+      const res = await axios.get(`${BASE_URL}/api/user/requests/received`, { withCredentials: true });
       dispatch(addRequests(res.data.data));
     } catch (err) {
       console.error(err);
