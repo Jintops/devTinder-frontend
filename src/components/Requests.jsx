@@ -84,7 +84,7 @@ return (
             </div>
 
             {/* Actions */}
-            <div className="flex gap-3">
+            <div className="flex  flex-col lg:flex-row  gap-3 pl-2">
               <button
                 className="px-4 py-2 bg-green-600 text-sm text-gray-100 rounded hover:bg-green-700 transition"
                 onClick={() => reviewRequests("accepted", request?._id)}

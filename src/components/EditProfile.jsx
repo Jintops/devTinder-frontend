@@ -4,7 +4,8 @@ import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { FaMapMarkerAlt } from "react-icons/fa"; 
+ 
+import { FaMapMarkerAlt, FaUser, FaImage, FaCode, FaInfoCircle } from "react-icons/fa";
 
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = useState(user.firstName);
@@ -66,7 +67,7 @@ const EditProfile = ({ user }) => {
 
   {/* First Name */}
   <div className="mb-5">
-    <label className="block text-gray-300 font-medium mb-2">Full Name</label>
+    <label className=" text-gray-300  mb-2text-gray-300 font-medium mb-2 flex items-center gap-1  drop-shadow-md"> <FaUser className="text-gray-400" />Full Name</label>
     <input
       type="text"
       value={firstName}
@@ -94,7 +95,7 @@ const EditProfile = ({ user }) => {
 
   {/* Photo URL */}
   <div className="mb-5">
-    <label className="block text-gray-300 font-medium mb-2">Profile Photo URL</label>
+    <label className="text-gray-300 font-medium mb-2 flex items-center gap-1  drop-shadow-md"><FaImage className="text-gray-400" />Profile Photo URL</label>
     <input
       type="text"
       value={photoUrl}
@@ -108,7 +109,7 @@ const EditProfile = ({ user }) => {
 
   {/* Skills */}
   <div className="mb-5">
-    <label className="block text-gray-300 font-medium mb-2">Skills</label>
+    <label className="text-gray-300 font-medium mb-2 flex items-center gap-1  drop-shadow-md"><FaCode className="text-gray-400" />Skills</label>
     <div className="flex">
       <input
         type="text"
@@ -122,7 +123,7 @@ const EditProfile = ({ user }) => {
       />
       <button
         onClick={handleAddSkill}
-        className="ml-3 px-5 py-1 bg-indigo-600 hover:bg-indigo-500 
+        className="ml-2 px-4 lg:px-5 py-1 bg-indigo-600 hover:bg-indigo-500 
                    text-white rounded-lg transition font-medium"
       >
         Add
@@ -170,7 +171,7 @@ const EditProfile = ({ user }) => {
 
   {/* About */}
   <div className="mb-5">
-    <label className="block text-gray-300 font-medium mb-2">About</label>
+    <label className="text-gray-300 font-medium mb-2 flex items-center gap-1  drop-shadow-md">  <FaInfoCircle className="text-gray-400" /> About</label>
     <textarea
       value={about}
       onChange={(e) => setAbout(e.target.value)}
