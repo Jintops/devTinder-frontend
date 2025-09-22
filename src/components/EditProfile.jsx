@@ -202,13 +202,13 @@ const EditProfile = ({ user }) => {
 </div>
 
 
-        {/* Preview Card */}
+        
         <div className="w-full lg:w-1/2 flex justify-center">
           <UserCard data={{ firstName, location, skills, photoUrl, gender, about }} />
         </div>
       </div>
 
-      {/* Toast Notification */}
+     
       {showToast && (
         <div className="fixed bottom-4 right-4 bg-indigo-600 text-white py-2 px-4 rounded-md shadow-lg">
           Profile updated successfully.
